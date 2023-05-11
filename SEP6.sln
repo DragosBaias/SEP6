@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEP6", "SEP6\SEP6.csproj", "{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{CCED4A3A-5986-4973-96AE-53C8C1FD5CED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCED4A3A-5986-4973-96AE-53C8C1FD5CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCED4A3A-5986-4973-96AE-53C8C1FD5CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCED4A3A-5986-4973-96AE-53C8C1FD5CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCED4A3A-5986-4973-96AE-53C8C1FD5CED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
