@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEP6", "SEP6\SEP6.csproj", "{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22FB0B0B-7742-49B0-BD5F-AFAF220B7B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
