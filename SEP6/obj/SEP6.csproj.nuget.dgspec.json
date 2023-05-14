@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dragos\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj": {}
+    "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dragos\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj": {
+    "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dragos\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj",
+        "projectUniqueName": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj",
         "projectName": "SEP6",
-        "projectPath": "C:\\Users\\Dragos\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj",
-        "packagesPath": "C:\\Users\\Dragos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dragos\\RiderProjects\\SEP6\\SEP6\\obj\\",
+        "projectPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj",
+        "packagesPath": "C:\\Users\\vaiti\\.nuget\\packages\\",
+        "outputPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dragos\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\vaiti\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
