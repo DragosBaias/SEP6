@@ -64,7 +64,6 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.deps.json
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.runtimeconfig.json
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.runtimeconfig.dev.json
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.dll
-D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\ref\SEP6.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.pdb
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.Views.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\SEP6.Views.pdb
@@ -119,3 +118,4 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\RestSharp.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\System.Text.Encodings.Web.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\System.Text.Json.dll
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\refint\SEP6.dll
