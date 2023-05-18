@@ -82,6 +82,13 @@ using SEP6.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\Index.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +97,21 @@ using SEP6.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 11 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\Index.razor"
+      
+
+    
+
+    protected override void OnInitialized()
+    {
+        HttpRetriever _httpRetriever = new HttpRetriever("Tom", 0);
+    }
+
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591
