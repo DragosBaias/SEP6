@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@imperiummovie.database.windows.net" uuid="5bea4284-e211-4722-94bf-c62b3d533943">
+    <data-source source="LOCAL" name="ImpMovieDB@imperiummovie.database.windows.net" uuid="5bea4284-e211-4722-94bf-c62b3d533943">
       <driver-ref>azure.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://imperiummovie.database.windows.net:1433;Initial Catalog=ImpMovieDB;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=&quot;Active Directory Default&quot;</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://imperiummovie.database.windows.net:1433;database=ImpMovieDB;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;Authentication=ActiveDirectoryIntegrated</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

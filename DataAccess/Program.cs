@@ -15,7 +15,7 @@ namespace DataAccess
     {
         public static void Main(string[] args)
         {
-            DatabaseConnector dbConnector = new DatabaseConnector();
+            HttpRetriever httpRetriever = new HttpRetriever();
             CreateHostBuilder(args).Build().Run();
         }
 
