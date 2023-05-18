@@ -6,11 +6,11 @@
 
     <ItemGroup>
       <PackageReference Include="RestSharp" Version="110.2.0" />
-        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     </ItemGroup>
 
-    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v.*.*\WebApplications\Microsoft.WebApplication.targets"/>
-    <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v*.*\WebApplications\Microsoft.WebApplication.targets"/>
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets"/>
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets"/>
+
     
 
 </Project>
