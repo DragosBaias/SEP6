@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'movie-imperium'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D0355A8988574D2CBFE88C6C580B0C5C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BC4892EAEC1644AFB860461ED3F49AE4 }}
           package: .
