@@ -29,6 +29,7 @@ namespace SEP6
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddScoped<TMDBApiClient>(provider => new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

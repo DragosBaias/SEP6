@@ -1,26 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj": {}
+    "C:\\Users\\nicol\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj": {}
   },
   "projects": {
-    "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj": {
+    "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj",
-        "projectName": "SEP6",
-        "projectPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj",
-        "packagesPath": "C:\\Users\\vaiti\\.nuget\\packages\\",
-        "outputPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\obj\\",
+        "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+        "projectName": "Entities",
+        "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vaiti\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -37,7 +40,71 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nicol\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj",
+        "projectName": "SEP6",
+        "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\SEP6\\SEP6.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\SEP6\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "RestSharp": {
               "target": "Package",
               "version": "[110.2.0, )"
@@ -49,7 +116,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -61,7 +129,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
