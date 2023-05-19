@@ -1,0 +1,12 @@
+D:\SEM6\SEP6\Project\SEP6\Domain\bin\Debug\net5.0\Domain.deps.json
+D:\SEM6\SEP6\Project\SEP6\Domain\bin\Debug\net5.0\Domain.dll
+D:\SEM6\SEP6\Project\SEP6\Domain\bin\Debug\net5.0\ref\Domain.dll
+D:\SEM6\SEP6\Project\SEP6\Domain\bin\Debug\net5.0\Domain.pdb
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.dll
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\ref\Domain.dll
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.pdb

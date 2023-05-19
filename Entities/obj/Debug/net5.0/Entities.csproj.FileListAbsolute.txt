@@ -1,0 +1,12 @@
+D:\SEM6\SEP6\Project\SEP6\Entities\bin\Debug\net5.0\Entities.deps.json
+D:\SEM6\SEP6\Project\SEP6\Entities\bin\Debug\net5.0\Entities.dll
+D:\SEM6\SEP6\Project\SEP6\Entities\bin\Debug\net5.0\ref\Entities.dll
+D:\SEM6\SEP6\Project\SEP6\Entities\bin\Debug\net5.0\Entities.pdb
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.AssemblyInfoInputs.cache
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.AssemblyInfo.cs
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.csproj.CoreCompileInputs.cache
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.dll
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\ref\Entities.dll
+D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.pdb
