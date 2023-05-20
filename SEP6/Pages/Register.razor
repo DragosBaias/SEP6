@@ -1,6 +1,41 @@
 ﻿@page "/register"
-<h3>Register</h3>
+@inject NavigationManager Navigation
+
+<div class="registerContainer">
+    <h3 class="text-center font-style">Imperium Movie</h3>
+
+    <form class="formContainer" method="POST" action="/register">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control custom-input" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control custom-input" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control custom-input" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control custom-input" name="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary custom-button">Create Account</button>
+        </div>
+    </form>
+
+    <div class="text-center mt-3">
+        Have an account already? <a href="/login">Click here to Sign in!</a>
+    </div>
+</div>
 
 @code {
-    
+
+    private void GoToLoginPage()
+    {
+        Navigation.NavigateTo("/login");
+    }
+
 }

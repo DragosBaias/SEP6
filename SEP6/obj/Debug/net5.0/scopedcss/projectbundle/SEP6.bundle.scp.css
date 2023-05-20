@@ -17,39 +17,16 @@
     color: white;
 }
 
-.font-style[b-iwscbyh8bk] {
-    font-family: "Arial", sans-serif;
-    font-size: 24px;
-}
-
-.formContainer[b-iwscbyh8bk] {
-    max-width: 400px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.formContainer label[b-iwscbyh8bk] {
+.loginContainer .formContainer label[b-iwscbyh8bk] {
     color: white;
 }
 
-.custom-input[b-iwscbyh8bk] {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 3px;
-    padding: 8px;
-    margin-bottom: 10px;
-    width: 100%;
+.loginContainer .text-center a[b-iwscbyh8bk] {
+    color: #ff6b6b;
+    text-decoration: none;
 }
 
-.custom-input:focus[b-iwscbyh8bk] {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.custom-button[b-iwscbyh8bk] {
+.loginContainer .custom-button[b-iwscbyh8bk] {
     background-color: #ff6b6b;
     color: #ffffff;
     border: none;
@@ -57,11 +34,46 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
-.custom-link[b-iwscbyh8bk] {
+.loginContainer .register-link[b-iwscbyh8bk] {
     color: #ff6b6b;
     text-decoration: none;
+}
+/* _content/SEP6/Pages/Register.razor.rz.scp.css */
+.registerContainer[b-a6qadzzod1] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.registerContainer .formContainer label[b-a6qadzzod1] {
+    color: white;
+}
+
+.registerContainer .text-center a[b-a6qadzzod1] {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.registerContainer .custom-button[b-a6qadzzod1] {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 /* _content/SEP6/Shared/MainLayout.razor.rz.scp.css */
 .page[b-09beghvgpt] {

@@ -1,4 +1,4 @@
-.loginContainer[b-iwscbyh8bk] {
+﻿.registerContainer {
     position: absolute;
     top: 0;
     left: 0;
@@ -13,17 +13,16 @@
     align-items: center;
     color: white;
 }
-
-.loginContainer .formContainer label[b-iwscbyh8bk] {
+.registerContainer .formContainer label {
     color: white;
 }
 
-.loginContainer .text-center a[b-iwscbyh8bk] {
+.registerContainer .text-center a {
     color: #ff6b6b;
     text-decoration: none;
 }
 
-.loginContainer .custom-button[b-iwscbyh8bk] {
+.registerContainer .custom-button {
     background-color: #ff6b6b;
     color: #ffffff;
     border: none;
@@ -31,10 +30,4 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px;
-}
-
-.loginContainer .register-link[b-iwscbyh8bk] {
-    color: #ff6b6b;
-    text-decoration: none;
 }
