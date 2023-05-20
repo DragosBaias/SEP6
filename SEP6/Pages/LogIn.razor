@@ -15,14 +15,15 @@
         </div>
         <div class="text-center">
             <button type="submit" class="btn custom-button">Log in</button>
-            <button type="button" class="btn custom-button" @onclick="ContinueAsGuest">Continue as Guest</button>
+            <button class="btn custom-button ml-2" @onclick="ContinueAsGuest">Continue as a guest</button>
         </div>
     </form>
 
     <div class="text-center mt-3">
-        Don't have an account? <a href="/register">Register here!</a>
+        Don't have an account? <a href="/register" class="register-link">Register here!</a>
     </div>
 </div>
+
 
 @code {
 

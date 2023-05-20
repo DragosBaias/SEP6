@@ -14,39 +14,16 @@
     color: white;
 }
 
-.font-style {
-    font-family: "Arial", sans-serif;
-    font-size: 24px;
-}
-
-.formContainer {
-    max-width: 400px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.formContainer label {
+.loginContainer .formContainer label {
     color: white;
 }
 
-.custom-input {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 3px;
-    padding: 8px;
-    margin-bottom: 10px;
-    width: 100%;
+.loginContainer .text-center a {
+    color: #ff6b6b;
+    text-decoration: none;
 }
 
-.custom-input:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.custom-button {
+.loginContainer .custom-button {
     background-color: #ff6b6b;
     color: #ffffff;
     border: none;
@@ -54,9 +31,10 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
-.custom-link {
+.loginContainer .register-link {
     color: #ff6b6b;
     text-decoration: none;
 }

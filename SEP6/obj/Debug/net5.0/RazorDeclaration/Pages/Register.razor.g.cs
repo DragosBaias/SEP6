@@ -97,6 +97,20 @@ using Microsoft.AspNetCore.Components.Routing;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 34 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\Register.razor"
+       
+
+    private void GoToLoginPage()
+    {
+        Navigation.NavigateTo("/login");
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }
 #pragma warning restore 1591

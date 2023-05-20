@@ -196,3 +196,4 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\Register.
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MainPage.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MainPage.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\Register.razor.rz.scp.css
