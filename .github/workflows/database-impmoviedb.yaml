@@ -49,4 +49,4 @@ jobs:
         uses: azure/sql-action@v1
         with:
           server-name: imperiummovie.database.windows.net
-          connection-string: ${{ secrets.jdbc:sqlserver://imperiummovie.database.windows.net:1433;database=ImpMovieDB;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;Authentication=ActiveDirectoryIntegrated }}
+          connection-string: ${{ secrets.AZURE_DATABASE_CONNECTION_STRING }}
