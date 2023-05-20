@@ -75,8 +75,6 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\SEP6.csproj.CoreCompileInputs.ca
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\SEP6.MvcApplicationPartsAssemblyInfo.cache
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\SEP6.RazorComponent.input.cache
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
@@ -88,8 +86,6 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\SEP6.TagHelpers.input.cache
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\SEP6.TagHelpers.output.cache
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\SEP6.RazorCoreGenerate.cache
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\App.razor.g.cs
-D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
@@ -196,3 +192,7 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\Entities.pdb
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\LogIn.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\LogIn.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\LogIn.razor.rz.scp.css
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\Register.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MainPage.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MainPage.razor.g.cs
