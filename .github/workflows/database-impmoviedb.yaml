@@ -15,6 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: mssql suite
+        uses: potatoqualitee/mssqlsuite@v1.7
+
 
       - name: Set up SQL Server tools
         uses: azure/setup-sqlcmd@v1
