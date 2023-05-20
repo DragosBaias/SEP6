@@ -10,3 +10,15 @@ D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.csproj.CoreCompileI
 D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.dll
 D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\ref\Entities.dll
 D:\SEM6\SEP6\Project\SEP6\Entities\obj\Debug\net5.0\Entities.pdb
+C:\Users\nicol\RiderProjects\SEP6\Entities\bin\Debug\net5.0\Entities.deps.json
+C:\Users\nicol\RiderProjects\SEP6\Entities\bin\Debug\net5.0\Entities.dll
+C:\Users\nicol\RiderProjects\SEP6\Entities\bin\Debug\net5.0\Entities.pdb
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.AssemblyInfoInputs.cache
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.AssemblyInfo.cs
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.csproj.CoreCompileInputs.cache
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.dll
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\refint\Entities.dll
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\Entities.pdb
+C:\Users\nicol\RiderProjects\SEP6\Entities\obj\Debug\net5.0\ref\Entities.dll

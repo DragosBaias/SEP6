@@ -141,8 +141,6 @@ C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\SEP6.csproj.CoreCompileI
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\SEP6.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\SEP6.RazorComponent.input.cache
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
@@ -153,8 +151,6 @@ C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\SEP6.TagHelpers.input.ca
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\SEP6.TagHelpers.output.cache
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\SEP6.RazorCoreGenerate.cache
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\App.razor.g.cs
-C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
@@ -197,3 +193,11 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MainPage.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MainPage.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\Register.razor.rz.scp.css
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MainPage.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\LogIn.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\Register.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MainPage.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\LogIn.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\LogIn.razor.rz.scp.css
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\Register.razor.rz.scp.css
