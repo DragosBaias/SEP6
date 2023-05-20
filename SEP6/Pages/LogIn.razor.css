@@ -1,0 +1,57 @@
+﻿.loginContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.font-style {
+    font-family: "Arial", sans-serif;
+    font-size: 24px;
+}
+
+.formContainer {
+    max-width: 400px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer label {
+    color: white;
+}
+
+.custom-input {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 3px;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.custom-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.custom-button {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}

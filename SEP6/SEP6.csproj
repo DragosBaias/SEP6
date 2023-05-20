@@ -21,5 +21,9 @@
       <_ContentIncludedByDefault Remove="Pages\Movies\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="wwwroot\images\Background.jpg" />
+    </ItemGroup>
+
 
 </Project>
