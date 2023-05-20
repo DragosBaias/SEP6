@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace SEP6
+namespace SEP6.Pages
 {
     #line hidden
     using System;
@@ -36,13 +36,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 #nullable restore
 #line 4 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
-using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
@@ -96,10 +89,11 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
-    public partial class _Imports : System.Object
+    [Microsoft.AspNetCore.Components.RouteAttribute("/LogIn")]
+    public partial class LogIn : LayoutComponentBase
     {
         #pragma warning disable 1998
-        protected void Execute()
+        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
