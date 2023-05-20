@@ -1,4 +1,5 @@
 ﻿@page "/login"
+@inject NavigationManager Navigation
 
 <div class="loginContainer">
     <h3 class="text-center font-style">Imperium Movie</h3>
@@ -14,6 +15,20 @@
         </div>
         <div class="text-center">
             <button type="submit" class="btn custom-button">Log in</button>
+            <button type="button" class="btn custom-button" @onclick="ContinueAsGuest">Continue as Guest</button>
         </div>
     </form>
+
+    <div class="text-center mt-3">
+        Don't have an account? <a href="/register">Register here!</a>
+    </div>
 </div>
+
+@code {
+
+    private void ContinueAsGuest()
+    {
+        Navigation.NavigateTo("/mainpage");
+    }
+
+}

@@ -58,6 +58,11 @@
     cursor: pointer;
     border-radius: 5px;
 }
+
+.custom-link[b-iwscbyh8bk] {
+    color: #ff6b6b;
+    text-decoration: none;
+}
 /* _content/SEP6/Shared/MainLayout.razor.rz.scp.css */
 .page[b-09beghvgpt] {
     position: relative;
