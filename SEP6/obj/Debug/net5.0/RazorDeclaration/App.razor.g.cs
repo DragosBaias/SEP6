@@ -89,13 +89,6 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 1 "D:\SEM6\SEP6\Project\SEP6\SEP6\App.razor"
-using SEP6.Pages;
-
-#line default
-#line hidden
-#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
