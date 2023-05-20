@@ -1,0 +1,52 @@
+# Docs for the Azure SQL Database Deploy action: https://github.com/Azure/sql-action
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy database to Azure SQL Database - movie-imperium
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up SQL Server tools
+        uses: azure/setup-sqlcmd@v1
+        with:
+          sql-package: true
+
+      - name: Generate SQL script
+        run: |
+          echo "Generating SQL script..."
+
+      - name: Upload SQL script artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sql-script
+          path: ./DataAccess
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-database.outputs.database-url }}
+
+    steps:
+      - name: Download SQL script artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: sql-script
+
+      - name: Deploy to Azure SQL Database
+        id: deploy-to-database
+        uses: azure/sql-action@v1
+        with:
+          server-name: imperiummovie.database.windows.net
+          connection-string: ${{ secrets.jdbc:sqlserver://imperiummovie.database.windows.net:1433;database=ImpMovieDB;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;Authentication=ActiveDirectoryIntegrated }}
