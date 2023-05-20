@@ -1,32 +1,147 @@
-﻿@inject NavigationManager Navigation
-@page "/"
-<h3 style="text-align: center;">Movie List</h3>
+﻿@page "/"
+@using Entities
 
-<div style="display: flex; flex-direction: column; align-items: center;">
-    @foreach(var movie in _movies)
+<h3>Movie List</h3>
+
+<div class="movie-list">
+    @foreach (var movie in _movies)
     {
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-            <p style="font-weight: bold; font-size: 18px;">@movie.Title</p>
-            <img src="https://image.tmdb.org/t/p/w500/@movie.Poster_Path" alt="@movie.Title" style="width: 200px; height: 300px; object-fit: cover;"/>
+        <div class="movie-card">
+            <div class="movie-poster-container">
+                @if (!string.IsNullOrEmpty(movie.PosterPath))
+                {
+                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title" />
+                }
+                else
+                {
+                    <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available" />
+                }
+            </div>
+            <div class="movie-details">
+                <h4 class="movie-title">@(movie.Title)</h4>
+                <div class="movie-info">
+                    <p class="movie-release-date"><strong><em>Release Date:</em></strong> @movie.ReleaseDate</p>
+                    <p class="movie-vote-average"><strong><em>Vote Average:</em></strong> @movie.VoteAverage</p>
+                    <p class="movie-vote-count"><strong><em>Vote Count:</em></strong> @movie.VoteCount</p>
+                </div>
+            </div>
         </div>
     }
 </div>
 
+<div class="pagination">
+    @if (currentPage != 1)
+    {
+        <button class="page-navigation" @onclick="() => ChangePage(-1)">Previous</button>
+    }
+    <span class="current-page">Page @currentPage</span>
+    <button class="page-navigation" @onclick="() => ChangePage(1)">Next</button>
+</div>
+
 <style>
-    body {
-        background-color: #f2f2f2;
+    .movie-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .movie-card {
+        width: 300px;
+        margin: 20px;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .movie-poster-container {
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .movie-poster, .fallback-poster {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .fallback-poster {
+        object-fit: contain;
+        background-color: #ddd;
+        padding: 10px;
+    }
+
+    .movie-details {
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .movie-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        word-break: break-word;
+        text-align: center;
+    }
+
+    .movie-info {
+        flex-grow: 1;
+    }
+
+    .movie-release-date,
+    .movie-vote-average,
+    .movie-vote-count {
+        margin-bottom: 5px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .page-navigation {
+        padding: 10px 20px;
+        margin: 0 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .current-page {
+        font-weight: bold;
     }
 </style>
 
 @code {
+    private List<MovieDetails> _movies = new List<MovieDetails>();
+    private int currentPage = 1;
 
-    private List<TMDBApiClient.Movie> _movies=new();
-    
     protected override async Task OnInitializedAsync()
     {
-        //TMDBApiClient tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
-       // _movies = await tmdbApiClient.GetMovies();
-        Navigation.NavigateTo("/login");
+        await LoadMovies();
     }
+
+    private async Task LoadMovies()
+    {
+        TMDBApiClient tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
+        _movies = await tmdbApiClient.GetMovies(currentPage);
+    }
+
+    private async Task ChangePage(int offset)
+    {
+        currentPage += offset;
+        if (currentPage < 1)
+            currentPage = 1;
+
+        await LoadMovies();
+    }
+
 
 }
