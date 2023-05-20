@@ -38,13 +38,6 @@ using Microsoft.AspNetCore.Components.Forms;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
-using Microsoft.AspNetCore.Components.Routing;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 6 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
@@ -75,6 +68,20 @@ using SEP6;
 #nullable restore
 #line 10 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
 using SEP6.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+using Microsoft.AspNetCore.Authentication;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
