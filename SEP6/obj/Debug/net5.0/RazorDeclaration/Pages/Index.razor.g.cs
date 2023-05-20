@@ -98,21 +98,24 @@ using Microsoft.AspNetCore.Components.Routing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\Dragos\RiderProjects\SEP6\SEP6\Pages\Index.razor"
+
+#line 21 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\Index.razor"
        
 
     private List<TMDBApiClient.Movie> _movies=new();
     
     protected override async Task OnInitializedAsync()
     {
-        TMDBApiClient tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
-        _movies = await tmdbApiClient.GetMovies();
+        //TMDBApiClient tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
+       // _movies = await tmdbApiClient.GetMovies();
+        Navigation.NavigateTo("/login");
     }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }
 #pragma warning restore 1591

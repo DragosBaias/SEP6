@@ -89,14 +89,8 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 1 "C:\Users\Dragos\RiderProjects\SEP6\SEP6\App.razor"
-using SEP6.Pages;
 
-#line default
-#line hidden
-#nullable disable
-    public partial class App : global::Microsoft.AspNetCore.Components.ComponentBase
+    public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

@@ -89,8 +89,10 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
-    [global::Microsoft.AspNetCore.Components.RouteAttribute("/LogIn")]
-    public partial class LogIn : LayoutComponentBase
+
+    [Microsoft.AspNetCore.Components.RouteAttribute("/login")]
+    public partial class LogIn : Microsoft.AspNetCore.Components.ComponentBase
+
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
