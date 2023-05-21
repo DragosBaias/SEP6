@@ -1,76 +1,86 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Entities;
-using RestSharp;
 using Newtonsoft.Json;
 
 public class TMDBApiClient
 {
-    private readonly string apiKey;
-    private HttpClient client;
+    private readonly string _apiKey;
+    private readonly HttpClient _httpClient;
 
     public TMDBApiClient(string apiKey)
     {
-        this.apiKey = apiKey;
+        _apiKey = apiKey;
+        _httpClient = new HttpClient();
+        _httpClient.BaseAddress = new Uri("https://api.themoviedb.org/3/");
     }
-    
-    public async Task<List<Movie>> GetMovies()
+
+    public async Task<List<MovieDetails>> GetMovies(int page)
     {
-        string apiUrl = "https://api.themoviedb.org/3/";
+        string requestUrl = $"discover/movie?api_key={_apiKey}&page={page}";
 
-        // Create an instance of HttpClient
-        client = new HttpClient();
+        HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+        response.EnsureSuccessStatusCode();
 
-        // Set the base URL for TMDb API
-        client.BaseAddress = new Uri(apiUrl);
+        string responseBody = await response.Content.ReadAsStringAsync();
 
-        // Send a GET request to retrieve the list of movies
-        HttpResponseMessage response = await client.GetAsync($"movie/popular?api_key={apiKey}");
+        var result = JsonConvert.DeserializeObject<MovieListResponse>(responseBody);
 
-        if (response.IsSuccessStatusCode)
-        {
-            // Read the response content
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            // Deserialize the response JSON into objects
-            var result = JsonConvert.DeserializeObject<MovieListResponse>(responseBody);
-
-            Console.WriteLine(responseBody);
-            // Process the movie data
-            foreach (var movie in result.Results)
-            {
-                Console.WriteLine($"Title: {movie.Title}");
-                Console.WriteLine($"Poster: https://image.tmdb.org/t/p/w500{movie.Poster_Path}");
-                Console.WriteLine();
-            }
-            
-            client.Dispose();
-            return result.Results;
-        }
-        else
-        {
-            
-            Console.WriteLine("Request failed with status code: " + response.StatusCode);
-            
-            client.Dispose();
-            return null;
-        }
-
-        // Dispose the HttpClient when finished
-        
+        return result?.Results;
     }
 
-
-    public class MovieListResponse
+    public async Task<List<MovieDetails>> GetPopularMovies()
     {
-        public List<Movie> Results { get; set; }
+        string requestUrl = $"movie/popular?api_key={_apiKey}";
+
+        HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+        response.EnsureSuccessStatusCode();
+
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<MovieListResponse>(responseBody);
+
+        return result?.Results;
     }
-    
-    public class Movie
+
+    public async Task<MovieDetails> GetMovieByTitle(string title)
     {
-        public string Title { get; set; }
-        public string Poster_Path { get; set; }
+        string encodedTitle = Uri.EscapeDataString(title);
+        string requestUrl = $"search/movie?api_key={_apiKey}&query={encodedTitle}";
+
+        HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+        response.EnsureSuccessStatusCode();
+
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<MovieListResponse>(responseBody);
+
+        return result?.Results?.FirstOrDefault();
     }
+
+    public async Task<List<MovieDetails>> Get10MostPopularMoviesByDecade(int decade)
+    {
+        int startYear=decade;
+        int endYear = startYear + 9;
+
+        string requestUrl = $"discover/movie?api_key={_apiKey}&sort_by=popularity.desc&primary_release_date.gte={startYear}-01-01&primary_release_date.lte={endYear}-01-01&page=1";
+
+        HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+        response.EnsureSuccessStatusCode();
+
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<MovieListResponse>(responseBody);
+
+        return result?.Results?.Take(10).ToList();
+    }
+}
+
+
+public class MovieListResponse
+{
+    public List<MovieDetails> Results { get; set; }
 }
