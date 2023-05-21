@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "suUe25Z+JyQXlWfQgfH3KN2lCD26jLWvwFHNFWZSXqMm7g4UTU7cdmTn9g/K2/0msCARlCC7AUpb0bn54qt1ew==",
+  "dgSpecHash": "kzCcf1L/J8jKluzAzwnrfIOm3q4MouVT1PR5eConni+f7KecY6vu8uMbPz8itIkHbnHdLXzymY+KcHuOHZiTMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\nicol\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -201,3 +201,5 @@ C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\LogIn.razor.
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\LogIn.razor.rz.scp.css
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\Register.razor.rz.scp.css
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieList.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieList.razor.g.cs
