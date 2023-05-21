@@ -52,6 +52,155 @@
     width: 930px;
     height: auto;
 }
+/* _content/SEP6/Pages/MovieList.razor.rz.scp.css */
+body[b-yelj34r6y8]{
+    background-color: #711324;
+    padding: 30px;
+}
+.title[b-yelj34r6y8]{
+    text-align: center;
+    color: white;
+    font-family: "Berlin Sans FB",serif;
+}
+.movie-list[b-yelj34r6y8] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie-card[b-yelj34r6y8] {
+    width: 300px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.movie-poster-container[b-yelj34r6y8] {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-poster[b-yelj34r6y8], .fallback-poster[b-yelj34r6y8] {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.fallback-poster[b-yelj34r6y8] {
+    object-fit: contain;
+    background-color: #ddd;
+    padding: 10px;
+}
+
+.movie-details[b-yelj34r6y8] {
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-title[b-yelj34r6y8] {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-break: break-word;
+    text-align: center;
+}
+
+.movie-info[b-yelj34r6y8] {
+    flex-grow: 1;
+}
+
+.movie-release-date[b-yelj34r6y8],
+.movie-vote-average[b-yelj34r6y8],
+.movie-vote-count[b-yelj34r6y8] {
+    margin-bottom: 5px;
+}
+
+.pagination[b-yelj34r6y8] {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-navigation[b-yelj34r6y8] {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.current-page[b-yelj34r6y8] {
+    font-weight: bold;
+}
+
+.search-bar[b-yelj34r6y8] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input[b-yelj34r6y8] {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.search-bar button[b-yelj34r6y8] {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.close-button[b-yelj34r6y8] {
+    padding: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.close-button span[b-yelj34r6y8] {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.filter-bar[b-yelj34r6y8] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-bar label[b-yelj34r6y8] {
+    margin-right: 10px;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    border: white 1px solid;
+    padding: 4px;
+}
+
+.filter-bar select[b-yelj34r6y8] {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 /* _content/SEP6/Pages/Register.razor.rz.scp.css */
 .registerContainer[b-a6qadzzod1] {
     position: absolute;
