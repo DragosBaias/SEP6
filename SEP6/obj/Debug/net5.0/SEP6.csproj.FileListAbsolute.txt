@@ -218,7 +218,5 @@ C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\staticwebassets\msbuild
 C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.SEP6.props
 C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.SEP6.props
 C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\refint\SEP6.dll
-C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieList.razor.g.cs
-C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieList.razor.g.cs
-C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\HallOfFame.razor.g.cs
-C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\HallOfFame.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieList.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieList.razor.g.cs
