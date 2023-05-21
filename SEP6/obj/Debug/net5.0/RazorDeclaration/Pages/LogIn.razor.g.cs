@@ -98,7 +98,7 @@ using Microsoft.AspNetCore.Components.Routing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 30 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\LogIn.razor"
+#line 29 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\LogIn.razor"
        
 
     private void ContinueAsGuest()

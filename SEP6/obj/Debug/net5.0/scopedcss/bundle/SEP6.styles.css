@@ -45,12 +45,12 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    margin-top: -200px; /* Adjust the value to move the logo up */
+    margin-top: -200px;
 }
 
 .logo-img[b-iwscbyh8bk] {
-    width: 930px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 930px;
+    height: auto;
 }
 /* _content/SEP6/Pages/Register.razor.rz.scp.css */
 .registerContainer[b-a6qadzzod1] {
@@ -85,6 +85,19 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.logo-container[b-a6qadzzod1] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: -50px;
+}
+
+.logo-img[b-a6qadzzod1] {
+    width: 930px;
+    height: auto;
 }
 /* _content/SEP6/Shared/MainLayout.razor.rz.scp.css */
 .page[b-09beghvgpt] {

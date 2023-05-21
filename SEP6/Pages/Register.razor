@@ -2,7 +2,9 @@
 @inject NavigationManager Navigation
 
 <div class="registerContainer">
-    <h3 class="text-center font-style">Imperium Movie</h3>
+    <div class="logo-container">
+        <img src="images/Logo.jpg" alt="Imperium Movie Logo" class="logo-img">
+    </div>
 
     <form class="formContainer" method="POST" action="/register">
         <div class="form-group">
@@ -32,10 +34,8 @@
 </div>
 
 @code {
-
     private void GoToLoginPage()
     {
         Navigation.NavigateTo("/login");
     }
-
 }
