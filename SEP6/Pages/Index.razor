@@ -1,16 +1,9 @@
 ﻿@inject NavigationManager Navigation
 @page "/"
+@using Entities
 <h3 style="text-align: center;">Movie List</h3>
 
-<div style="display: flex; flex-direction: column; align-items: center;">
-    @foreach(var movie in _movies)
-    {
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-            <p style="font-weight: bold; font-size: 18px;">@movie.Title</p>
-            <img src="https://image.tmdb.org/t/p/w500/@movie.Poster_Path" alt="@movie.Title" style="width: 200px; height: 300px; object-fit: cover;"/>
-        </div>
-    }
-</div>
+
 
 <style>
     body {
@@ -20,12 +13,8 @@
 
 @code {
 
-    private List<TMDBApiClient.Movie> _movies=new();
-    
     protected override async Task OnInitializedAsync()
     {
-        //TMDBApiClient tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
-       // _movies = await tmdbApiClient.GetMovies();
         Navigation.NavigateTo("/login");
     }
 
