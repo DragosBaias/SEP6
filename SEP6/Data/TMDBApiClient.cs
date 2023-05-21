@@ -77,6 +77,23 @@ public class TMDBApiClient
 
         return result?.Results?.Take(10).ToList();
     }
+
+    public async Task<List<MovieDetails>> GetHoFMovie()
+    {
+        List<MovieDetails> topMoviesByYear = new List<MovieDetails>();
+
+        for (int currentYear = DateTime.Now.Year; currentYear > 1950; currentYear-- )
+        {
+           string requestUrl = $"discover/movie?api_key={_apiKey}&sort_by=popularity.desc&primary_release_date.gte={currentYear}-01-01&primary_release_date.lte={currentYear}-12-31&page=1";
+                   HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+                   response.EnsureSuccessStatusCode();
+                   string responseBody = await response.Content.ReadAsStringAsync();
+                   var result = JsonConvert.DeserializeObject<MovieListResponse>(responseBody);
+                   topMoviesByYear.AddRange(result.Results.Take(1).ToList());
+        }
+        
+        return topMoviesByYear;
+    }
 }
 
 
