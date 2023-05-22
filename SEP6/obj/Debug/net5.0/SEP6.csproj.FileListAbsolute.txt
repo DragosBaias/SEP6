@@ -220,6 +220,9 @@ C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\staticwebassets\msbuild
 C:\Users\Dragos\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\refint\SEP6.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieList.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieList.razor.g.cs
-D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\scopedcss\Pages\MovieList.razor.rz.scp.css
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\HallOfFame.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\HallOfFame.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\FavouriteList.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\PublicLists.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\FavouriteList.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\PublicLists.razor.g.cs

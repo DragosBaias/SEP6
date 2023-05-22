@@ -89,41 +89,14 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
-using Entities;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/HallOfFame")]
-    public partial class HallOfFame : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/FavouriteList")]
+    public partial class FavouriteList : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 161 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
-       
-    private List<MovieDetails> _movies = new List<MovieDetails>();
-    TMDBApiClient _tmdbApiClient;
-
-    protected override async Task OnInitializedAsync()
-    {
-        _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
-        await LoadMovies();
-    }
-
-    private async Task LoadMovies()
-    {
-        _movies = await _tmdbApiClient.GetHoFMovie();
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591
