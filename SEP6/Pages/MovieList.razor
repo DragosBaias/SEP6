@@ -2,13 +2,14 @@
 @using Entities
 
 <div class="container">
+
     <h3 class="title">Explore all movies</h3>
 
     <div class="bar">
         <div class="search-bar">
             @if (_searchMode)
             {
-                <input type="text" @bind="_searchQuery" placeholder="Search by title" />
+                <input type="text" @bind="_searchQuery" placeholder="Search by title"/>
                 <button class="custom-button" @onclick="SearchMovies">Search</button>
                 <button class="close-button" @onclick="CloseSearch"><span>&times;</span></button>
             }
@@ -17,6 +18,16 @@
                 <button class="custom-button" @onclick="ToggleSearch">Search Movies</button>
             }
         </div>
+        
+        <div class="dropdown">
+            <input type="checkbox" id="menu-toggle" class="dropdown-toggle" />
+            <label for="menu-toggle" class="dropdown-label">&#9776; Menu</label>
+            <ul class="dropdown-menu">
+                <li><a href="/FavouriteList">Favourite lists</a></li>
+                <li><a href="/PublicLists">View other favourite lists</a></li>
+            </ul>
+        </div>
+        
         <div class="filter-bar">
             <label for="filter-decade">Display all the most popular movies or filter them by decade:</label>
             <select id="filter-decade" @onchange="FilterByDecade">
@@ -42,11 +53,11 @@
                     <div class="movie-poster-container">
                         @if (!string.IsNullOrEmpty(movie.PosterPath))
                         {
-                            <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title" />
+                            <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
                         }
                         else
                         {
-                            <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available" />
+                            <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
                         }
                     </div>
                     <div class="movie-details">
@@ -252,6 +263,64 @@
         border: 1px solid #ccc;
         border-radius: 3px;
     }
+    
+   .dropdown {
+       position: relative;
+       display: inline-block;
+       margin-bottom: 20px;
+   }
+   
+   .dropdown-toggle {
+       display: none;
+   }
+   
+   .dropdown-label {
+       display: block;
+       padding: 10px;
+       background-color: #f5f5f5;
+       color: black;
+       cursor: pointer;
+       border-radius: 3px;
+       border: 1px solid #ccc;
+       margin-left: -200px;
+       margin-right: 1000px;
+   }
+   
+   .dropdown-toggle:checked + .dropdown-label {
+       background-color: #ddd;
+   }
+   
+   .dropdown-menu {
+       position: absolute;
+       top: 100%;
+       left: 0;
+       padding: 0;
+       list-style-type: none;
+       background-color: #fff;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       display: none;
+       margin-left: -200px;
+       margin-right: 1000px;
+   }
+   
+   .dropdown-toggle:checked + .dropdown-label + .dropdown-menu {
+       display: block;
+   }
+   
+   .dropdown-menu li {
+       padding: 10px;
+       width: 200px;
+   }
+   
+   .dropdown-menu li a {
+       color: black;
+       text-decoration: none;
+   }
+   
+   .dropdown-menu li a:hover {
+       background-color: #f5f5f5;
+   }
+   
 </style>
     
 @code {

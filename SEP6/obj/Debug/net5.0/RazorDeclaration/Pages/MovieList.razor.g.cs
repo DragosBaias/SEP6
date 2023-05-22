@@ -105,7 +105,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 257 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
+#line 326 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
        
         private List<MovieDetails> _movies = new List<MovieDetails>();
         private int _currentPage = 1;

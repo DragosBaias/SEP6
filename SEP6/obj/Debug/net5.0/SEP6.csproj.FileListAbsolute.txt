@@ -222,3 +222,7 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieList
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieList.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\HallOfFame.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\HallOfFame.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\FavouriteList.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\PublicLists.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\FavouriteList.razor.g.cs
+D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\PublicLists.razor.g.cs
