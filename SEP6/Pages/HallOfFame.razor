@@ -1,15 +1,16 @@
 ﻿@page "/HallOfFame"
 @using Entities
 
-<h3 class="title" >Hall of Fame</h3>
-
 <div class="movie-list">
     @if (_movies.Count == 0)
     {
-        <h4 class="title">Loading...</h4>
+         <div class="loading-container">
+            <img src="images/HallOfFameLoading.jpg" alt="Hall of Fame" class="logo-loading" style="width: 600px; height: auto;" />
+             </div>
     }
     else
     {
+        <h1><img src="images/HallOfFameSimple.jpg" alt="Hall of Fame" class="logo-simple" /></h1>
     @foreach (var movie in _movies)
     {
         @if(movie!=null)
@@ -43,10 +44,21 @@
 
 <style>
 
-    body{
-        background-color: #711324;
-        padding: 30px;
+    body {
+        background-image: url('images/Background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
+        
+    .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+        
     .title{
         text-align: center;
         color: black;
@@ -190,6 +202,16 @@
             font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 3px;
+        }
+        
+        .logo-loading {
+            width: 400px;
+            height: auto;
+        }
+        
+        .logo-simple {
+            width: 400px;
+            height: auto;
         }
 </style>
 

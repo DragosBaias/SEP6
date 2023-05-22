@@ -105,7 +105,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 196 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
+#line 218 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     TMDBApiClient _tmdbApiClient;
