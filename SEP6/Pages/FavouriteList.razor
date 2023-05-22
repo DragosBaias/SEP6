@@ -1,6 +1,160 @@
 ﻿@page "/FavouriteList"
-<h3>FavouriteList</h3>
+
+<h3 style="color: white">Favourites List</h3>
+
+@if (movies.Count == 0)
+{
+    <p style="color: white">No favorite movies yet.</p>
+}
+else
+{
+    <ul>
+        @foreach (var movie in movies)
+        {
+            <li>@movie</li>
+        }
+    </ul>
+}
+
+<h4 style="color: white">Add a Movie</h4>
+<div>
+    <input type="text" style="color: black" @bind="newMovie" />
+    <button class="custom-button" @onclick="AddMovie">Add</button>
+</div>
 
 @code {
-    
+    private List<string> movies = new List<string>();
+    private string newMovie;
+
+    private void AddMovie()
+    {
+        if (!string.IsNullOrEmpty(newMovie))
+        {
+            movies.Add(newMovie);
+            newMovie = string.Empty;
+        }
+    }
 }
+
+<style>
+    .custom-button {
+        background-color: #ff6b6b;
+        color: #ffffff;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    body {
+        background-image: url('images/Background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        text-align: center;
+        color: white;
+        font-family: "Berlin Sans FB", serif;
+        margin: 0;
+    }
+
+    .logo-simple {
+        width: 300px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .movie-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .movie-card {
+        width: 300px;
+        margin: 20px;
+        padding: 10px;
+        background-color: transparent;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-poster-container {
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .movie-poster,
+    .fallback-poster {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .fallback-poster {
+        object-fit: contain;
+        background-color: #ddd;
+        padding: 10px;
+    }
+
+    .movie-details {
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .movie-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        word-break: break-word;
+        text-align: center;
+        color: white;
+    }
+
+    .movie-info {
+        flex-grow: 1;
+    }
+
+    .movie-release-date,
+    .movie-vote-average,
+    .movie-vote-count {
+        margin-bottom: 5px;
+        color: white;
+    }
+</style>
