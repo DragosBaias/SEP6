@@ -98,14 +98,12 @@ using Microsoft.AspNetCore.Components.Routing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\Register.razor"
+#line 36 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\Register.razor"
        
-
     private void GoToLoginPage()
     {
         Navigation.NavigateTo("/login");
     }
-
 
 #line default
 #line hidden

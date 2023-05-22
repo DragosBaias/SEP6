@@ -97,19 +97,6 @@ using Microsoft.AspNetCore.Components.Routing;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 30 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\LogIn.razor"
-       
-
-    private void ContinueAsGuest()
-    {
-        Navigation.NavigateTo("/mainpage");
-    }
-
-
-#line default
-#line hidden
-#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }
