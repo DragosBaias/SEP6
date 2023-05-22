@@ -105,85 +105,87 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 256 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
+#line 254 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
        
-    private List<MovieDetails> _movies = new List<MovieDetails>();
-    private int _currentPage = 1;
-    private string _searchQuery = string.Empty;
-    private bool _searchMode = false;
-    TMDBApiClient _tmdbApiClient;
+        private List<MovieDetails> _movies = new List<MovieDetails>();
+        private int _currentPage = 1;
+        private string _searchQuery = string.Empty;
+        private bool _searchMode = false;
+        TMDBApiClient _tmdbApiClient;
 
-    protected override async Task OnInitializedAsync()
-    {
-        _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
-        await LoadMovies();
-    }
-
-    private async Task LoadMovies()
-    {
-        
-        if (string.IsNullOrEmpty(_searchQuery))
+        protected override async Task OnInitializedAsync()
         {
-            _movies = await _tmdbApiClient.GetMovies(_currentPage);
+            _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
+            await LoadMovies();
         }
-        else
+
+        private async Task LoadMovies()
         {
-            List<MovieDetails> moviesByTitle = new List<MovieDetails>();
-            moviesByTitle.Add(await _tmdbApiClient.GetMovieByTitle(_searchQuery));
-            _movies = moviesByTitle;
-        }
-    }
 
-    private async Task ChangePage(int offset)
-    {
-        _currentPage += offset;
-        if (_currentPage < 1)
-            _currentPage = 1;
-
-        await LoadMovies();
-    }
-
-    private async Task SearchMovies()
-    {
-        _currentPage = 1;
-        await LoadMovies();
-        _searchMode = true;
-    }
-
-    private async void CloseSearch()
-    {
-        _searchMode = false;
-        _searchQuery = string.Empty;
-        _currentPage = 1;
-        await LoadMovies();
-        StateHasChanged();
-    }
-    
-    private async Task FilterByDecade(ChangeEventArgs e)
-    {
-        if (e.Value != null)
-        {
-            string decade = e.Value.ToString();
-            if (decade.Equals("all"))
-                _movies = await _tmdbApiClient.GetPopularMovies();
+            if (string.IsNullOrEmpty(_searchQuery))
+            {
+                _movies = await _tmdbApiClient.GetMovies(_currentPage);
+            }
             else
             {
-                _movies = await _tmdbApiClient.Get10MostPopularMoviesByDecade(int.Parse(decade.Replace("s","")));
+                List<MovieDetails> moviesByTitle = new List<MovieDetails>();
+                moviesByTitle.Add(await _tmdbApiClient.GetMovieByTitle(_searchQuery));
+                _movies = moviesByTitle;
             }
         }
-        StateHasChanged();
-    }
 
-    private async Task ViewMostPopularMovies()
-    {
-        _movies = await _tmdbApiClient.GetPopularMovies();
-        StateHasChanged();
-    }
+        private async Task ChangePage(int offset)
+        {
+            _currentPage += offset;
+            if (_currentPage < 1)
+                _currentPage = 1;
 
-    private void ToggleSearch()
-    {
-        _searchMode = true;
-    }
+            await LoadMovies();
+        }
+
+        private async Task SearchMovies()
+        {
+            _currentPage = 1;
+            await LoadMovies();
+            _searchMode = true;
+        }
+
+        private async void CloseSearch()
+        {
+            _searchMode = false;
+            _searchQuery = string.Empty;
+            _currentPage = 1;
+            await LoadMovies();
+            StateHasChanged();
+        }
+
+        private async Task FilterByDecade(ChangeEventArgs e)
+        {
+            if (e.Value != null)
+            {
+                string decade = e.Value.ToString();
+                if (decade.Equals("all"))
+                    _movies = await _tmdbApiClient.GetPopularMovies();
+                else
+                {
+                    _movies = await _tmdbApiClient.Get10MostPopularMoviesByDecade(int.Parse(decade.Replace("s", "")));
+                }
+            }
+            StateHasChanged();
+        }
+
+        private async Task ViewMostPopularMovies()
+        {
+            _movies = await _tmdbApiClient.GetPopularMovies();
+            StateHasChanged();
+        }
+
+        private void ToggleSearch()
+        {
+            _searchMode = true;
+        }
+
+    
 
 #line default
 #line hidden
