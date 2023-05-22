@@ -105,24 +105,21 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 218 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
+#line 161 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     TMDBApiClient _tmdbApiClient;
-    
-    
+
     protected override async Task OnInitializedAsync()
     {
         _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
         await LoadMovies();
     }
-    
+
     private async Task LoadMovies()
     {
-        
         _movies = await _tmdbApiClient.GetHoFMovie();
     }
-    
 
 #line default
 #line hidden

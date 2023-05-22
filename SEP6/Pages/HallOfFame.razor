@@ -1,49 +1,52 @@
 ﻿@page "/HallOfFame"
 @using Entities
 
-<div class="movie-list">
+<div class="container">
     @if (_movies.Count == 0)
     {
-         <div class="loading-container">
-            <img src="images/HallOfFameLoading.jpg" alt="Hall of Fame" class="logo-loading" style="width: 600px; height: auto;" />
-             </div>
+        <div class="loading-container">
+            <img src="images/HallOfFameLoading.jpg" alt="Hall of Fame" class="logo-loading" />
+        </div>
     }
     else
     {
-        <h1><img src="images/HallOfFameSimple.jpg" alt="Hall of Fame" class="logo-simple" /></h1>
-    @foreach (var movie in _movies)
-    {
-        @if(movie!=null)
-        {
-            <div class="movie-card">
-                <h4 class="title">@movie.ReleaseDate.Substring(0,4)</h4>
-                <div class="movie-poster-container">
-                    @if (!string.IsNullOrEmpty(movie.PosterPath))
-                    {
-                        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
-                    }
-                    else
-                    {
-                        <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
-                    }
-                </div>
-                <div class="movie-details">
-                    <h4 class="movie-title">@(movie.Title)</h4>
-                    <div class="movie-info">
-                        <p class="movie-release-date"><strong><em>Release Date:</em></strong> <em>@movie.ReleaseDate</em></p>
-                        <p class="movie-vote-average"><strong><em>Vote Average:</em></strong> <em>@movie.VoteAverage</em></p>
-                        <p class="movie-vote-count"><strong><em>Vote Count:</em></strong> <em>@movie.VoteCount</em></p>
+        <div class="title-container">
+            <img src="images/HallOfFameSimple.jpg" alt="Hall of Fame" class="logo-simple" />
+            <h1 class="title">Hall of Fame</h1>
+        </div>
+        <div class="movie-list">
+            @foreach (var movie in _movies)
+            {
+                @if (movie != null)
+                {
+                    <div class="movie-card">
+                        <h4 class="title" style="color: white">@movie.ReleaseDate.Substring(0, 4)</h4>
+                        <div class="movie-poster-container">
+                            @if (!string.IsNullOrEmpty(movie.PosterPath))
+                            {
+                                <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title" />
+                            }
+                            else
+                            {
+                                <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available" />
+                            }
+                        </div>
+                        <div class="movie-details">
+                            <h4 class="movie-title">@movie.Title</h4>
+                            <div class="movie-info">
+                                <p class="movie-release-date"><strong><em>Release Date:</em></strong> <em>@movie.ReleaseDate</em></p>
+                                <p class="movie-vote-average"><strong><em>Vote Average:</em></strong> <em>@movie.VoteAverage</em></p>
+                                <p class="movie-vote-count"><strong><em>Vote Count:</em></strong> <em>@movie.VoteCount</em></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        }
-    }
-        
+                }
+            }
+        </div>
     }
 </div>
 
 <style>
-
     body {
         background-image: url('images/Background.jpg');
         background-size: cover;
@@ -51,32 +54,60 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
-        
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .loading-container {
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
     }
-        
-    .title{
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .title {
         text-align: center;
         color: black;
-        font-family: "Berlin Sans FB",serif;
+        font-family: "Berlin Sans FB", serif;
+        margin: 0;
     }
+
+    .logo-simple {
+        width: 300px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
     .movie-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
     }
 
     .movie-card {
         width: 300px;
         margin: 20px;
         padding: 10px;
-        background-color: #f5f5f5;
+        background-color: transparent;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .movie-poster-container {
@@ -86,7 +117,8 @@
         align-items: center;
     }
 
-    .movie-poster, .fallback-poster {
+    .movie-poster,
+    .fallback-poster {
         max-width: 100%;
         max-height: 100%;
     }
@@ -111,6 +143,7 @@
         margin-bottom: 10px;
         word-break: break-word;
         text-align: center;
+        color: white;
     }
 
     .movie-info {
@@ -121,115 +154,22 @@
     .movie-vote-average,
     .movie-vote-count {
         margin-bottom: 5px;
+        color: white;
     }
-
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .page-navigation {
-        padding: 10px 20px;
-        margin: 0 5px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-
-    .current-page {
-        font-weight: bold;
-    }
-
-    .search-bar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .search-bar input {
-        padding: 5px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-
-    .search-bar button {
-        padding: 5px 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        margin-left: 10px;
-    }
-
-    .close-button {
-        padding: 5px;
-        background-color: #dc3545;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        margin-left: 10px;
-    }
-
-    .close-button span {
-        font-size: 12px;
-        line-height: 1;
-    }
-    
-    .filter-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-    
-        .filter-bar label {
-            margin-right: 10px;
-            background-color: #f5f5f5;
-            border-radius: 3px;
-            border: white 1px solid;
-            padding: 4px;
-        }
-    
-        .filter-bar select {
-            padding: 5px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-        
-        .logo-loading {
-            width: 400px;
-            height: auto;
-        }
-        
-        .logo-simple {
-            width: 400px;
-            height: auto;
-        }
 </style>
 
 @code {
     private List<MovieDetails> _movies = new List<MovieDetails>();
     TMDBApiClient _tmdbApiClient;
-    
-    
+
     protected override async Task OnInitializedAsync()
     {
         _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
         await LoadMovies();
     }
-    
+
     private async Task LoadMovies()
     {
-        
         _movies = await _tmdbApiClient.GetHoFMovie();
     }
-    
 }
