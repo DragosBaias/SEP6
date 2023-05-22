@@ -1,11 +1,13 @@
-﻿@page "/MovieList"
+﻿@inject NavigationManager Navigation
+
+@page "/MovieList"
 @using Entities
 
 <div class="container">
 
     <h3 class="title">Explore all movies</h3>
-
-    <div class="bar">
+        <img src="images/HallOfFame.jpg" alt="Hall of Fame" class="logo" @onclick="OpenHallOfFame" />
+        <div class="bar">
         <div class="search-bar">
             @if (_searchMode)
             {
@@ -114,6 +116,12 @@
         color: white;
         font-family: 'Berlin Sans FB', serif;
         margin-bottom: 30px;
+    }
+    
+    .logo {
+        width: 400px;
+        height: auto;
+        margin-bottom: 10px;
     }
 
     .movie-list {
@@ -401,5 +409,10 @@
         {
             _searchMode = true;
         }
+    
+         private void OpenHallOfFame()
+         {
+             Navigation.NavigateTo("HallOfFame");
+         }
 
     }

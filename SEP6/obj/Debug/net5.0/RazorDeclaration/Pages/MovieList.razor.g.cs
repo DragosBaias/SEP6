@@ -90,7 +90,7 @@ using Microsoft.AspNetCore.Components.Routing;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
+#line 4 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
 using Entities;
 
 #line default
@@ -105,7 +105,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 326 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
+#line 334 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
        
         private List<MovieDetails> _movies = new List<MovieDetails>();
         private int _currentPage = 1;
@@ -184,12 +184,18 @@ using Entities;
         {
             _searchMode = true;
         }
+    
+         private void OpenHallOfFame()
+         {
+             Navigation.NavigateTo("HallOfFame");
+         }
 
     
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }
 #pragma warning restore 1591
