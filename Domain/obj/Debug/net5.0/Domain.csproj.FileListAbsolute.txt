@@ -25,3 +25,6 @@ C:\Users\nicol\RiderProjects\SEP6\Domain\obj\Debug\net5.0\Domain.dll
 C:\Users\nicol\RiderProjects\SEP6\Domain\obj\Debug\net5.0\refint\Domain.dll
 C:\Users\nicol\RiderProjects\SEP6\Domain\obj\Debug\net5.0\Domain.pdb
 C:\Users\nicol\RiderProjects\SEP6\Domain\obj\Debug\net5.0\ref\Domain.dll
+D:\SEM6\SEP6\Project\SEP6\Domain\bin\Debug\net5.0\Entities.dll
+D:\SEM6\SEP6\Project\SEP6\Domain\bin\Debug\net5.0\Entities.pdb
+D:\SEM6\SEP6\Project\SEP6\Domain\obj\Debug\net5.0\Domain.csproj.CopyComplete
