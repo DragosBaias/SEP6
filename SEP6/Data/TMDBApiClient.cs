@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Domain;
 using Entities;
 using Newtonsoft.Json;
 
-public class TMDBApiClient
+public class TMDBApiClient:IApiRetriever
 {
     private readonly string _apiKey;
     private readonly HttpClient _httpClient;
