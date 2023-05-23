@@ -119,7 +119,7 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 341 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
+#line 361 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieList.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     private int _currentPage = 1;
@@ -206,6 +206,11 @@ using Domain;
     {
         DataSession.Instance.MovieDetails = movie;
         Navigation.NavigateTo("/MovieOverview");
+    }
+    
+    private async Task AddToFavorites(MovieDetails movie)
+    {
+        //TODO: Nicola
     }
 
 
