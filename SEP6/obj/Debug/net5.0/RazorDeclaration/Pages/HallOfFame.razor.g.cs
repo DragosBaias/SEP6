@@ -105,7 +105,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 161 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
+#line 181 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\HallOfFame.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     TMDBApiClient _tmdbApiClient;
@@ -120,10 +120,16 @@ using Entities;
     {
         _movies = await _tmdbApiClient.GetHoFMovie();
     }
+    
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

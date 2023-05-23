@@ -1,5 +1,6 @@
 ﻿@page "/HallOfFame"
 @using Entities
+@inject NavigationManager NavigationManager
 
 <div class="container">
     @if (_movies.Count == 0)
@@ -42,6 +43,10 @@
                     </div>
                 }
             }
+        </div>
+        
+        <div class="back-button">
+            <button class="btn-back" @onclick="NavigateBack">Back</button>
         </div>
     }
 </div>
@@ -156,6 +161,21 @@
         margin-bottom: 5px;
         color: white;
     }
+    
+    .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    
+    .btn-back {
+          padding: 5px 10px;
+          background-color: #ff6b6b;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+        }
 </style>
 
 @code {
@@ -171,5 +191,10 @@
     private async Task LoadMovies()
     {
         _movies = await _tmdbApiClient.GetHoFMovie();
+    }
+    
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
     }
 }
