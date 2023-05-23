@@ -1,26 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dragos\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {}
+    "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dragos\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
+    "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dragos\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\Dragos\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\Dragos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dragos\\RiderProjects\\SEP6\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dragos\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -38,6 +41,16 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -59,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.105\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
