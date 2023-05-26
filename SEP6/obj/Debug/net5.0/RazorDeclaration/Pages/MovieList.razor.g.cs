@@ -90,22 +90,29 @@ using Microsoft.AspNetCore.Components.Routing;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
+#line 6 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
 using Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
+#line 7 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
 using SEP6.Temporary;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
+#line 8 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
 using Domain;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
+using SEP6.Data;
 
 #line default
 #line hidden
@@ -119,7 +126,7 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 341 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
+#line 364 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     private int _currentPage = 1;
@@ -207,11 +214,28 @@ using Domain;
         DataSession.Instance.MovieDetails = movie;
         Navigation.NavigateTo("/MovieOverview");
     }
+    
+    private async Task AddToFavorites(MovieDetails movie)
+    {
+        await ApiClient.AddMovieToList(new Movie { ID = 0,MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID});
+    }
+
+    private void OpenFavouriteMovies()
+    {
+        Navigation.NavigateTo("FavouriteList");
+    }
+    
+    private void OpenPublicLists()
+    {
+        Navigation.NavigateTo("PublicLists");
+    }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient ApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever _tmdbApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }

@@ -11,7 +11,6 @@ namespace SEP6.Pages
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Components;
 #nullable restore
 #line 1 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using System.Net.Http;
@@ -89,6 +88,27 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+using Microsoft.AspNetCore.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+using Entities;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/register")]
     public partial class Register : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,16 +118,36 @@ using Microsoft.AspNetCore.Components.Routing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 36 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+#line 40 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
        
-    private void GoToLoginPage()
+    private User user = new User();
+    private string confirmPassword;
+
+    private async Task RegisterUser()
     {
-        Navigation.NavigateTo("/login");
+        if (user.Password != confirmPassword)
+        {
+            // Passwords don't match
+            return;
+        }
+
+        try
+        {
+            await MyApiClient.RegisterUser(user);
+            // Registration successful, navigate to login page
+            Navigation.NavigateTo("/login");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            // Handle registration error
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient MyApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }

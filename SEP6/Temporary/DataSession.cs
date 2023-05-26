@@ -6,6 +6,7 @@ namespace SEP6.Temporary
     {
         private static DataSession instance;
         public MovieDetails MovieDetails { get; set; }
+        public User User { get; set; }
 
         private DataSession()
         {

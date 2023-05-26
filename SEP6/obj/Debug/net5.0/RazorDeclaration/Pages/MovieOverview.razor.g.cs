@@ -112,7 +112,7 @@ using SEP6.Temporary;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 105 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 107 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
        
     private void NavigateBack()
     {

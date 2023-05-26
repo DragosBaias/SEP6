@@ -15,5 +15,6 @@ namespace Domain
         public Task<List<MovieDetails>> Get10MostPopularMoviesByDecade(int decade);
 
         public Task<List<MovieDetails>> GetHoFMovie();
+        Task<MovieDetails> GetMovie(int movieMovieId);
     }
 }

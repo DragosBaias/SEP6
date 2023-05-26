@@ -11,7 +11,6 @@ namespace SEP6.Pages
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Components;
 #nullable restore
 #line 1 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using System.Net.Http;
@@ -89,6 +88,41 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
+using SEP6.Temporary;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
+using Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
+using Microsoft.AspNetCore.Components;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/FavouriteList")]
     public partial class FavouriteList : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,23 +132,82 @@ using Microsoft.AspNetCore.Components.Routing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 25 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 75 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\FavouriteList.razor"
        
-    private List<string> movies = new List<string>();
-    private string newMovie;
-
-    private void AddMovie()
+    private  List<MovieDetails> _movies = new();
+    private string _searchQuery = string.Empty;
+    private bool _searchMode = false;
+    
+    protected override async Task OnInitializedAsync()
     {
-        if (!string.IsNullOrEmpty(newMovie))
+        await LoadMovies();
+    }
+    
+    private async Task LoadMovies()
+    {
+
+        if (string.IsNullOrEmpty(_searchQuery))
         {
-            movies.Add(newMovie);
-            newMovie = string.Empty;
+            Entities.MovieList movieList = await ApiClient.GetMovieList(DataSession.User.MovieListID);
+            foreach (var movie in movieList.Movies)
+            {
+                _movies.Add(await TmdbClient.GetMovie(movie.MovieID));
+            }
         }
+        else
+        {
+            List<MovieDetails> moviesByTitle = new List<MovieDetails>();
+            moviesByTitle.Add(await TmdbClient.GetMovieByTitle(_searchQuery));
+            _movies = moviesByTitle;
+        }
+    }
+    
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
+    }
+    
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.Instance.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+    
+    private async Task AddToFavorites(MovieDetails movie)
+    {
+        await ApiClient.AddMovieToList(new Movie { MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID });
+    }
+    
+    private async Task RemoveFromFavourites (MovieDetails movieDetails)
+    {
+        await ApiClient.RemoveMovieFromList(Convert.ToInt32(movieDetails.Id));
+        await LoadMovies();
+    }
+    private async Task SearchMovies()
+    {
+        await LoadMovies();
+        _searchMode = true;
+    }
+
+    private async void CloseSearch()
+    {
+        _searchMode = false;
+        _searchQuery = string.Empty;
+        await LoadMovies();
+        StateHasChanged();
+    }
+    private void ToggleSearch()
+    {
+        _searchMode = true;
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient ApiClient { get; set; }
     }
 }
 #pragma warning restore 1591

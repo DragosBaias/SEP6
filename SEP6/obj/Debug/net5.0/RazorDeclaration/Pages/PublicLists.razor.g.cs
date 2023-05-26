@@ -89,6 +89,34 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using SEP6.Temporary;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/PublicLists")]
     public partial class PublicLists : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,23 +126,58 @@ using Microsoft.AspNetCore.Components.Routing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 25 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+#line 56 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
        
-    private List<string> movies = new List<string>();
-    private string newMovie;
+    private List<List<MovieDetails>> _shownMovies = new();
 
-    private void AddMovie()
+    protected override async Task OnInitializedAsync()
     {
-        if (!string.IsNullOrEmpty(newMovie))
+        _shownMovies = await LoadLists();
+    }
+
+    private async Task<List<List<MovieDetails>>> LoadLists()
+    {
+        List<Entities.MovieList> movieLists = await ApiClient.GetMovieLists();
+        List<List<MovieDetails>> shownMovies = new List<List<MovieDetails>>();
+
+        foreach (var movieList in movieLists)
         {
-            movies.Add(newMovie);
-            newMovie = string.Empty;
+            if(movieList.Movies != null)
+            {
+                List<MovieDetails> movieDetailsList = new List<MovieDetails>();
+                foreach (var movie in movieList.Movies.Take(3))
+                {
+                    if(movie != null)
+                    {
+                        var movieDetails = await TmdbClient.GetMovie(movie.MovieID);
+                        movieDetailsList.Add(movieDetails);
+                    }
+                }
+                shownMovies.Add(movieDetailsList);
+            }
         }
+
+        return shownMovies;
+    }
+    
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.Instance.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+    
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient ApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
     }
 }
 #pragma warning restore 1591

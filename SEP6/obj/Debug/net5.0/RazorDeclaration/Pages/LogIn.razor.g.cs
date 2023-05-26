@@ -89,6 +89,20 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\LogIn.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\LogIn.razor"
+using SEP6.Temporary;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/login")]
     public partial class LogIn : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -97,6 +111,32 @@ using Microsoft.AspNetCore.Components.Routing;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 32 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\LogIn.razor"
+       
+    private string username;
+    private string password;
+
+    private async Task LogInUser()
+    {
+        try
+        {
+            DataSession.User=await MyApiClient.LogIn(username, password);
+    // Login successful, navigate to home page or another desired page
+            Navigation.NavigateTo("/movielist");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+    // Handle login error
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient MyApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }
