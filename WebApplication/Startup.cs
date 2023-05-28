@@ -28,7 +28,7 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton(new MyApiClient("https://localhost:5001"));
+            services.AddSingleton(new MyApiClient("https://movie-imperium.azurewebsites.net"));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication", Version = "v1" });

@@ -25,7 +25,7 @@ namespace SEP6
             services.AddSingleton<IApiRetriever,TMDBApiClient>(_ => new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857"));
             services.AddAuthorizationCore();
             services.AddSingleton(DataSession.Instance);
-            services.AddSingleton(new MyApiClient("https://localhost:5003"));
+            services.AddSingleton(new MyApiClient("https://movie-imperium.azurewebsites.net"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
