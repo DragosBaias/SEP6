@@ -17,6 +17,7 @@ namespace WebApplication.Data
 
         public MyApiClient(string baseUrl)
         {
+            Console.WriteLine("Base URL: " + baseUrl);
             this.baseUrl = baseUrl;
             this.httpClient = new HttpClient();
         }
