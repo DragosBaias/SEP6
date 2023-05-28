@@ -30,7 +30,8 @@ namespace WebApplication
             services.AddControllers();
             services.AddSingleton(provider =>
             {
-                var baseUrl = Configuration.GetValue<string>("MyApiClient:BaseUrl");
+                var baseUrl = Configuration["MyApiClient:BaseUrl"];
+                Console.WriteLine("Base URL: " + baseUrl);
                 return new MyApiClient(baseUrl);
             });
             services.AddSwaggerGen(c =>
