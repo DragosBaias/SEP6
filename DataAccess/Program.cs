@@ -16,12 +16,7 @@ namespace DataAccess
     {
         public static void Main(string[] args)
         {
-            DatabaseDataRetriever dataRetriever = new DatabaseDataRetriever();
-            User user = new User();
-            user.Name = "Nicola3";
-            user.Username = "Nicola03";
-            user.Password = "password";
-            User user1 = dataRetriever.RegisterUser(user).Result;
+            
             CreateHostBuilder(args).Build().Run();
         }
 

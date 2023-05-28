@@ -1,6 +1,8 @@
 ﻿@page "/HallOfFame"
 @using Entities
+@using SEP6.Temporary
 @inject NavigationManager NavigationManager
+@inject DataSession DataSession
 
 <div class="container">
     @if (_movies.Count == 0)
@@ -20,7 +22,7 @@
             {
                 @if (movie != null)
                 {
-                    <div class="movie-card">
+                    <div class="movie-card" @onclick="()=> OpenMovieOverview(movie)">
                         <h4 class="title" style="color: white">@movie.ReleaseDate.Substring(0, 4)</h4>
                         <div class="movie-poster-container">
                             @if (!string.IsNullOrEmpty(movie.PosterPath))
@@ -113,6 +115,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        cursor: pointer;
     }
 
     .movie-poster-container {
@@ -166,6 +169,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
+            
         }
     
     .btn-back {
@@ -175,6 +179,8 @@
           border: none;
           border-radius: 3px;
           cursor: pointer;
+          
+        margin: 25px;
         }
 </style>
 
@@ -191,6 +197,12 @@
     private async Task LoadMovies()
     {
         _movies = await _tmdbApiClient.GetHoFMovie();
+    }
+    
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
     }
     
     private void NavigateBack()

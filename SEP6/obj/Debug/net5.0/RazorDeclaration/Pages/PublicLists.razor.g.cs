@@ -13,108 +13,171 @@ namespace SEP6.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 1 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 6 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 7 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 8 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 9 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using SEP6;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 10 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using SEP6.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 11 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Authentication;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 12 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/PublicLists")]
-    public partial class PublicLists : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using SEP6.Temporary;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/PublicLists")]
+    public partial class PublicLists : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
 #nullable restore
-#line 25 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\PublicLists.razor"
+#line 57 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
        
-    private List<string> movies = new List<string>();
-    private string newMovie;
+    private List<List<MovieDetails>> _shownMovies = new();
 
-    private void AddMovie()
+    protected override async Task OnInitializedAsync()
     {
-        if (!string.IsNullOrEmpty(newMovie))
+        _shownMovies = await LoadLists();
+    }
+
+    private async Task<List<List<MovieDetails>>> LoadLists()
+    {
+        List<Entities.MovieList> movieLists = await ApiClient.GetMovieLists();
+        List<List<MovieDetails>> shownMovies = new List<List<MovieDetails>>();
+
+        foreach (var movieList in movieLists)
         {
-            movies.Add(newMovie);
-            newMovie = string.Empty;
+            if(movieList.Movies != null)
+            {
+                List<MovieDetails> movieDetailsList = new List<MovieDetails>();
+                foreach (var movie in movieList.Movies.Take(3))
+                {
+                    if(movie != null)
+                    {
+                        var movieDetails = await TmdbClient.GetMovie(movie.MovieID);
+                        movieDetailsList.Add(movieDetails);
+                    }
+                }
+                shownMovies.Add(movieDetailsList);
+            }
         }
+
+        return shownMovies;
+    }
+    
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.Instance.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+    
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient ApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
     }
 }
 #pragma warning restore 1591

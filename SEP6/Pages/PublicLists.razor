@@ -1,160 +1,228 @@
 ﻿@page "/PublicLists"
+@using SEP6.Temporary
+@using Domain
+@using Entities
+@using SEP6.Data
+@inject DataSession DataSession
+@inject IApiRetriever TmdbClient
+@inject MyApiClient ApiClient
+@inject NavigationManager NavigationManager
 
-<h3 style="color: white">Public List</h3>
+<h3 class="title">Public Lists</h3>
+<p class="invitation">Explore the favorite lists of other users.</p>
+<button class="back-button" @onclick="GoBack">Back</button>
 
-@if (movies.Count == 0)
+@if (_shownMovies.Count == 0)
 {
-    <p style="color: white">No favorite movies yet.</p>
+    <p class="empty-message">No favorite movies yet.</p>
 }
 else
 {
-    <ul>
-        @foreach (var movie in movies)
+    <div class="movie-list">
+        @foreach (var movieList in _shownMovies)
         {
-            <li>@movie</li>
+            
+            <div class="movie-list-box">
+                <h3 class="page-title">Favourite list of a user</h3>
+                <div class="movie-list-movies">
+                    @foreach (var movie in movieList)
+                    {
+                        <div class="movie-card" @onclick="() => OpenMovieOverview(movie)">
+                            <div class="movie-poster-container">
+                                @if (!string.IsNullOrEmpty(movie.PosterPath))
+                                {
+                                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
+                                }
+                                else
+                                {
+                                    <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
+                                }
+                            </div>
+                            <div class="movie-details">
+                                <h4 class="movie-title">@movie.Title</h4>
+                                <div class="movie-info">
+                                    <p class="movie-release-date"><strong>Release Date:</strong> @movie.ReleaseDate</p>
+                                    <p class="movie-vote-average"><strong>Vote Average:</strong> @movie.VoteAverage</p>
+                                    <p class="movie-vote-count"><strong>Vote Count:</strong> @movie.VoteCount</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         }
-    </ul>
+    </div>
 }
 
-<h4 style="color: white">Add a Movie</h4>
-<div>
-    <input type="text" style="color: black" @bind="newMovie" />
-    <button class="custom-button" @onclick="AddMovie">Add</button>
-</div>
-
 @code {
-    private List<string> movies = new List<string>();
-    private string newMovie;
+    private List<List<MovieDetails>> _shownMovies = new();
 
-    private void AddMovie()
+    protected override async Task OnInitializedAsync()
     {
-        if (!string.IsNullOrEmpty(newMovie))
+        _shownMovies = await LoadLists();
+    }
+
+    private async Task<List<List<MovieDetails>>> LoadLists()
+    {
+        List<Entities.MovieList> movieLists = await ApiClient.GetMovieLists();
+        List<List<MovieDetails>> shownMovies = new List<List<MovieDetails>>();
+
+        foreach (var movieList in movieLists)
         {
-            movies.Add(newMovie);
-            newMovie = string.Empty;
+            if(movieList.Movies != null)
+            {
+                List<MovieDetails> movieDetailsList = new List<MovieDetails>();
+                foreach (var movie in movieList.Movies.Take(3))
+                {
+                    if(movie != null)
+                    {
+                        var movieDetails = await TmdbClient.GetMovie(movie.MovieID);
+                        movieDetailsList.Add(movieDetails);
+                    }
+                }
+                shownMovies.Add(movieDetailsList);
+            }
         }
+
+        return shownMovies;
+    }
+    
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.Instance.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+    
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
     }
 }
 
 <style>
-    .custom-button {
-        background-color: #ff6b6b;
-        color: #ffffff;
-        border: none;
-        outline: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-top: 10px;
-    }
+     body {
+            background-image: url('images/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+         .page-title {
+                color: white;
+            }
+        
+            .empty-message {
+                color: white;
+            }
+        
+            .movie-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+            }
+        
+            .movie-list-box {
+                margin: 20px;
+                padding: 10px;
+                background-color: #1a1a1a;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        
+            .movie-list-movies {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+        
+            .movie-card {
+                width: 300px;
+                margin: 20px;
+                padding: 10px;
+                background-color: #222222;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor:pointer;
+            }
+        
+            .movie-poster-container {
+                height: 400px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .title {
+                    width: 100%;
+                    text-align: center;
+                    color: white;
+                    font-size: 35px;
+                    font-family: Amiri,serif;
+                    margin: 30px;
+                }
+        
+            .movie-poster,
+            .fallback-poster {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        
+            .fallback-poster {
+                object-fit: contain;
+                background-color: #ddd;
+                padding: 10px;
+            }
+        
+            .movie-details {
+                padding: 10px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        
+            .movie-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                word-break: break-word;
+                text-align: center;
+                color: white;
+            }
+        
+            .movie-info {
+                flex-grow: 1;
+            }
+        
+            .movie-release-date,
+            .movie-vote-average,
+            .movie-vote-count {
+                margin-bottom: 5px;
+                color: white;
+            }
 
-    body {
-        background-image: url('images/Background.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .loading-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    .title-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+    .invitation {
+        color: white;
+        font-size: 20px;
         margin-bottom: 20px;
-    }
-
-    .title {
         text-align: center;
-        color: white;
-        font-family: "Berlin Sans FB", serif;
-        margin: 0;
     }
 
-    .logo-simple {
-        width: 300px;
-        height: auto;
-        margin-bottom: 10px;
-    }
-
-    .movie-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-    }
-
-    .movie-card {
-        width: 300px;
-        margin: 20px;
+    .back-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
         padding: 10px;
-        background-color: transparent;
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
         border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .movie-poster-container {
-        height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .movie-poster,
-    .fallback-poster {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .fallback-poster {
-        object-fit: contain;
-        background-color: #ddd;
-        padding: 10px;
-    }
-
-    .movie-details {
-        padding: 10px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .movie-title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        word-break: break-word;
-        text-align: center;
-        color: white;
-    }
-
-    .movie-info {
-        flex-grow: 1;
-    }
-
-    .movie-release-date,
-    .movie-vote-average,
-    .movie-vote-count {
-        margin-bottom: 5px;
-        color: white;
+        cursor: pointer;
+        margin: 25px;
     }
 </style>

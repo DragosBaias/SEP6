@@ -1,9 +1,12 @@
 ﻿@inject NavigationManager Navigation
 @inject IApiRetriever _tmdbApiClient
+@inject MyApiClient ApiClient
+@inject DataSession DataSession
 @page "/MovieList"
 @using Entities
 @using SEP6.Temporary
 @using Domain
+@using SEP6.Data
 
 <div class="container">
 
@@ -28,8 +31,8 @@
             <input type="checkbox" id="menu-toggle" class="dropdown-toggle" />
             <label for="menu-toggle" class="dropdown-label">&#9776; Menu</label>
             <ul class="dropdown-menu">
-                <li><a href="/FavouriteList">Favourite lists</a></li>
-                <li><a href="/PublicLists">View other favourite lists</a></li>
+                <li><a @onclick="OpenFavouriteMovies">Favourite lists</a></li>
+                <li><a @onclick="OpenPublicLists">View other favourite lists</a></li>
             </ul>
         </div>
         
@@ -130,6 +133,7 @@
         width: 400px;
         height: auto;
         margin-bottom: 10px;
+        cursor: pointer;
     }
 
     .movie-list {
@@ -448,7 +452,17 @@
     
     private async Task AddToFavorites(MovieDetails movie)
     {
-        //TODO: Nicola
+        await ApiClient.AddMovieToList(new Movie { ID = 0,MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID});
+    }
+
+    private void OpenFavouriteMovies()
+    {
+        Navigation.NavigateTo("FavouriteList");
+    }
+    
+    private void OpenPublicLists()
+    {
+        Navigation.NavigateTo("PublicLists");
     }
 
 }

@@ -1,38 +1,143 @@
 ﻿@page "/FavouriteList"
+@inject MyApiClient ApiClient
+@inject IApiRetriever TmdbClient
+@inject DataSession DataSession
+@inject NavigationManager NavigationManager
+@using SEP6.Data
+@using SEP6.Temporary
+@using Entities
+@using Domain
+@using Microsoft.AspNetCore.Components
 
-<h3 style="color: white">Favourites List</h3>
 
-@if (movies.Count == 0)
-{
-    <p style="color: white">No favorite movies yet.</p>
-}
-else
-{
-    <ul>
-        @foreach (var movie in movies)
+<h1 class="title">Explore all movies</h1>
+<div class="bar">
+    <div class="search-bar">
+        @if (_searchMode)
         {
-            <li>@movie</li>
+            <input type="text" @bind="_searchQuery" placeholder="Search by title"/>
+            <button class="custom-button" @onclick="SearchMovies">Search</button>
+            <button class="close-button" @onclick="CloseSearch"><span>&times;</span></button>
         }
-    </ul>
-}
+        else
+        {
+            <button class="custom-button" @onclick="ToggleSearch">Search Movies</button>
+        }
+    </div>
+</div>
+        
+<div class="back-button">
+    <button class="btn-back" @onclick="NavigateBack">Back</button>
+</div>
 
-<h4 style="color: white">Add a Movie</h4>
-<div>
-    <input type="text" style="color: black" @bind="newMovie" />
-    <button class="custom-button" @onclick="AddMovie">Add</button>
+
+<div class="movie-list">
+    @foreach (var movie in _movies)
+    {
+        @if (movie != null)
+        {
+            <div class="movie-card" @onclick="()=>OpenMovieOverview(movie)">
+                <div class="movie-poster-container">
+                    @if (!string.IsNullOrEmpty(movie.PosterPath))
+                    {
+                        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
+                    }
+                    else
+                    {
+                        <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
+                    }
+                </div>
+                <div class="movie-details">
+                    <h4 class="movie-title">@(movie.Title)</h4>
+                    <div class="movie-info">
+                        <p class="movie-release-date"><strong><em>Release Date:</em></strong> <em>@movie.ReleaseDate</em></p>
+                        <p class="movie-vote-average"><strong><em>Vote Average:</em></strong> <em>@movie.VoteAverage</em></p>
+                        <p class="movie-vote-count"><strong><em>Vote Count:</em></strong> <em>@movie.VoteCount</em></p>
+                    </div>
+                    @if(_searchQuery!=String.Empty)
+                    {
+                        <div class="add-to-favorite-container">
+                            <button class="add-to-favorite-button" @onclick="() => AddToFavorites(movie)">Add to Favorite</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="add-to-favorite-container">
+                            <button class="add-to-favorite-button" @onclick="() => RemoveFromFavourites(movie)">Remove from Favorite</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
 </div>
 
 @code {
-    private List<string> movies = new List<string>();
-    private string newMovie;
-
-    private void AddMovie()
+    private  List<MovieDetails> _movies = new();
+    private string _searchQuery = string.Empty;
+    private bool _searchMode = false;
+    
+    protected override async Task OnInitializedAsync()
     {
-        if (!string.IsNullOrEmpty(newMovie))
+        await LoadMovies();
+    }
+    
+    private async Task LoadMovies()
+    {
+
+        if (string.IsNullOrEmpty(_searchQuery))
         {
-            movies.Add(newMovie);
-            newMovie = string.Empty;
+            Entities.MovieList movieList = await ApiClient.GetMovieList(DataSession.User.MovieListID);
+            foreach (var movie in movieList.Movies)
+            {
+                _movies.Add(await TmdbClient.GetMovie(movie.MovieID));
+            }
         }
+        else
+        {
+            List<MovieDetails> moviesByTitle = new List<MovieDetails>();
+            moviesByTitle.Add(await TmdbClient.GetMovieByTitle(_searchQuery));
+            _movies = moviesByTitle;
+        }
+    }
+    
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/MovieList");
+    }
+    
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.Instance.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+    
+    private async Task AddToFavorites(MovieDetails movie)
+    {
+        await ApiClient.AddMovieToList(new Movie { MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID });
+    }
+    
+    private async Task RemoveFromFavourites (MovieDetails movieDetails)
+    {
+        await ApiClient.RemoveMovieFromList(Convert.ToInt32(movieDetails.Id));
+        await LoadMovies();
+    }
+    private async Task SearchMovies()
+    {
+        await LoadMovies();
+        _searchMode = true;
+    }
+
+    private async void CloseSearch()
+    {
+        _searchMode = false;
+        _searchQuery = string.Empty;
+        await LoadMovies();
+        StateHasChanged();
+    }
+    private void ToggleSearch()
+    {
+        _searchMode = true;
     }
 }
 
@@ -55,34 +160,70 @@ else
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
+    
+    .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    
+        .btn-back {
+            padding: 5px 10px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin: 25px;
+            cursor: pointer;
+        }
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .loading-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    .title-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
+    .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .search-bar input {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    
+        .close-button {
+            padding: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    
+        .close-button span {
+            font-size: 12px;
+            line-height: 1;
+        }
 
     .title {
-        text-align: center;
-        color: white;
-        font-family: "Berlin Sans FB", serif;
-        margin: 0;
-    }
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 35px;
+            font-family: Amiri,serif;
+            margin: 30px;
+        }
 
     .logo-simple {
         width: 300px;
@@ -109,6 +250,7 @@ else
         display: flex;
         flex-direction: column;
         align-items: center;
+        cursor: pointer;
     }
 
     .movie-poster-container {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.DBContext;
@@ -23,7 +24,7 @@ namespace DataAccess.Data
         {
             using var context = new ImperiumDBContext(options);
             MovieList movieList = new MovieList();
-            movieList.MovieListID = GenerateNewMovieListID();
+            movieList.MovieListID = GenerateNewMovieListId();
             user.MovieList = movieList;
             await context.Users.AddAsync(user);
             await context.SaveChangesAsync();
@@ -50,31 +51,29 @@ namespace DataAccess.Data
             return movieList;
         }
 
-        public async Task<MovieList> AddMovie(int movieListId, int movieId)
+        public async Task<List<MovieList>> GetMovieLists()
         {
             using var context = new ImperiumDBContext(options);
-            var movieList = await context.MovieList.Include(m => m.Movies).FirstOrDefaultAsync(m => m.MovieListID == movieListId);
-            var movie = await GetMovie(movieId);
-
-            movieList.Movies.Add(movie);
-            await context.SaveChangesAsync();
-
-            return movieList;
+            return context.MovieList.Include(m => m.Movies).ToList();
         }
 
-        public async Task<MovieList> RemoveMovie(int movieListId, int movieId)
+        public async Task AddMovie( Movie movie)
         {
             using var context = new ImperiumDBContext(options);
-            var movieList = await context.MovieList.Include(m => m.Movies).FirstOrDefaultAsync(m => m.MovieListID == movieListId);
-            var movie = await GetMovie(movieId);
-
-            movieList.Movies.Remove(movie);
+            context.Movie.Add(movie);
             await context.SaveChangesAsync();
-
-            return movieList;
         }
 
-        private int GenerateNewMovieListID()
+        public async Task RemoveMovie(int movieId)
+        {
+            using var context = new ImperiumDBContext(options);
+            Movie movie = await context.Movie.FirstAsync(m => m.MovieID == movieId);
+            context.Movie.Remove(movie);
+            await context.SaveChangesAsync();
+
+        }
+
+        private int GenerateNewMovieListId()
         {
             using var context = new ImperiumDBContext(options);
             int newId;

@@ -9441,35 +9441,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vaiti\\.nuget\\packages\\": {}
+    "C:\\Users\\nicol\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SEM6\\SEP6\\Project\\SEP6\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\DataAccess\\DataAccess.csproj",
-      "packagesPath": "C:\\Users\\vaiti\\.nuget\\packages\\",
-      "outputPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\DataAccess\\obj\\",
+      "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\DataAccess\\DataAccess.csproj",
+      "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vaiti\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\SEM6\\SEP6\\Project\\SEP6\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\Domain\\Domain.csproj"
+            "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj"
             },
-            "D:\\SEM6\\SEP6\\Project\\SEP6\\Entities\\Entities.csproj": {
-              "projectPath": "D:\\SEM6\\SEP6\\Project\\SEP6\\Entities\\Entities.csproj"
+            "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj"
             }
           }
         }
@@ -9545,7 +9548,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -9557,7 +9561,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

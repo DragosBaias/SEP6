@@ -95,6 +95,16 @@ public class TMDBApiClient:IApiRetriever
         
         return topMoviesByYear;
     }
+
+    public async Task<MovieDetails> GetMovie(int movieId)
+    {
+        string requestUrl = $"movie/{movieId}?api_key={_apiKey}";
+        HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+        response.EnsureSuccessStatusCode();
+        string responseBody = await response.Content.ReadAsStringAsync();
+        var movieDetails = JsonConvert.DeserializeObject<MovieDetails>(responseBody);
+        return movieDetails;
+    }
 }
 
 
