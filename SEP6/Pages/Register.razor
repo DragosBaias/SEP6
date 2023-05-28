@@ -4,6 +4,7 @@
 @using Entities
 @inject NavigationManager Navigation
 @inject MyApiClient MyApiClient
+@inject IJSRuntime JsRuntime
 
 <div class="registerContainer">
     <div class="logo-container">
@@ -45,7 +46,7 @@
     {
         if (user.Password != confirmPassword)
         {
-            // Passwords don't match
+            await JsRuntime.InvokeVoidAsync("alert", "The two passwords do not match.");
             return;
         }
 

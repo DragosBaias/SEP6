@@ -126,7 +126,7 @@ using SEP6.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 364 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
+#line 365 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieList.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     private int _currentPage = 1;

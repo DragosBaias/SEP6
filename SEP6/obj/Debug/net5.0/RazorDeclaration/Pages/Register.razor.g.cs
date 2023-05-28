@@ -118,7 +118,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+#line 41 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
        
     private User user = new User();
     private string confirmPassword;
@@ -127,7 +127,7 @@ using Entities;
     {
         if (user.Password != confirmPassword)
         {
-            // Passwords don't match
+            await JsRuntime.InvokeVoidAsync("alert", "The two passwords do not match.");
             return;
         }
 
@@ -147,6 +147,7 @@ using Entities;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient MyApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }

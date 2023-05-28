@@ -96,6 +96,13 @@ using Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\HallOfFame.razor"
+using SEP6.Temporary;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/HallOfFame")]
     public partial class HallOfFame : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,7 +112,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 181 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\HallOfFame.razor"
+#line 187 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\HallOfFame.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     TMDBApiClient _tmdbApiClient;
@@ -121,6 +128,12 @@ using Entities;
         _movies = await _tmdbApiClient.GetHoFMovie();
     }
     
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.MovieDetails = movie;
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+    
     private void NavigateBack()
     {
         NavigationManager.NavigateTo("/MovieList");
@@ -129,6 +142,7 @@ using Entities;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }

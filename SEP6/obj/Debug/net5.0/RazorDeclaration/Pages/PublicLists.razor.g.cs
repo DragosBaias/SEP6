@@ -126,7 +126,7 @@ using SEP6.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
+#line 57 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\PublicLists.razor"
        
     private List<List<MovieDetails>> _shownMovies = new();
 
