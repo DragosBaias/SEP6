@@ -54,4 +54,4 @@ jobs:
           app-name: 'movie-imperium'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BC4892EAEC1644AFB860461ED3F49AE4 }}
-          package: .
+          package: ${{ github.workspace }}/.net-app
