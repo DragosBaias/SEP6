@@ -28,7 +28,11 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton(new MyApiClient("https://movie-imperium.azurewebsites.net"));
+            services.AddSingleton(provider =>
+            {
+                var baseUrl = Configuration.GetValue<string>("MyApiClient:BaseUrl");
+                return new MyApiClient(baseUrl);
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication", Version = "v1" });
@@ -53,5 +57,6 @@ namespace WebApplication
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
+        
     }
 }
