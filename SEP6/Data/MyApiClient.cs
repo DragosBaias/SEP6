@@ -48,6 +48,7 @@ namespace SEP6.Data
                 StringContent content = new StringContent(userJson, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PostAsync(GetFullUrl(apiUrl), content);
+                Console.WriteLine(GetFullUrl(apiUrl) + "!!!!!!!!!!!!!!!!!!!!!!");
                 response.EnsureSuccessStatusCode();
             }
             catch (HttpRequestException ex)
