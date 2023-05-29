@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "1S0ALA62ScueSJj+Ibig0LqADZE2Fi6pstdx4AwKZrVZMu5FGjWtXowF9o/V9Nc0PDB6cSUaZUjsjLMxHO04mA==",
+  "dgSpecHash": "/lD1/MNv14BXP8O3GqNxULiYLGQxqiP6WdnV3SFoCX/fnXnEIkyAobWZaCjCpYIQhAteABn8O9OBPhWEJEHIrg==",
   "success": true,
   "projectFilePath": "D:\\SEM6\\SEP6\\Project\\SEP6\\SEP6\\SEP6.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.applicationinsights\\2.21.0\\microsoft.applicationinsights.2.21.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -30,6 +31,7 @@
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\2.2.0\\microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.logging.applicationinsights\\2.21.0\\microsoft.extensions.logging.applicationinsights.2.21.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\microsoft.extensions.objectpool.2.2.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",

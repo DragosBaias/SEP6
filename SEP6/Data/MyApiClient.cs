@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace SEP6.Data
@@ -12,6 +13,13 @@ namespace SEP6.Data
     {
         private readonly string baseUrl;
         private readonly HttpClient httpClient;
+
+        private readonly ILogger _logger;
+
+        //public MyApiClient(ILogger<MyApiClient> logger)
+       // {
+         //   _logger = logger;
+       // }
 
         public MyApiClient(string baseUrl)
         {
@@ -49,12 +57,14 @@ namespace SEP6.Data
                 StringContent content = new StringContent(userJson, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PostAsync(GetFullUrl(apiUrl), content);
+                _logger.LogInformation("ADRIAN");
                 Console.WriteLine(GetFullUrl(apiUrl) + "!!!!!!!!!!!!!!!!!!!!!!");
                 response.EnsureSuccessStatusCode();
             }
             catch (HttpRequestException ex)
             {
                 Console.WriteLine(ex);
+                _logger.LogInformation("ADRIAN");
                 throw;
             }
         }

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "bJ51HvOUoMbwF0LUBcFfF+gwz688JxL6J1vsEwOeCzoYPzYAQmY0QQgVQWhBMC0UA9D82tghMrEqhPl6MIdrxw==",
+  "dgSpecHash": "mCiIqowOtg2/J5T7QFruSa0U0Ho/TYhHTQqrgMwJ1+mER3sNzl67fCuG+j/CfW0MarF7vlnpKpnWW93dB80XbQ==",
   "success": true,
   "projectFilePath": "D:\\SEM6\\SEP6\\Project\\SEP6\\WebApplication\\WebApplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.applicationinsights\\2.21.0\\microsoft.applicationinsights.2.21.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.17\\microsoft.entityframeworkcore.5.0.17.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.17\\microsoft.entityframeworkcore.abstractions.5.0.17.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.17\\microsoft.entityframeworkcore.analyzers.5.0.17.nupkg.sha512",
@@ -14,6 +15,7 @@
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.logging.applicationinsights\\2.21.0\\microsoft.extensions.logging.applicationinsights.2.21.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\vaiti\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
