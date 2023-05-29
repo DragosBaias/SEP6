@@ -13,107 +13,142 @@ namespace SEP6.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 1 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 6 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 7 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 8 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 9 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using SEP6;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 10 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using SEP6.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 11 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Authentication;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "D:\SEM6\SEP6\Project\SEP6\SEP6\_Imports.razor"
+#line 12 "C:\Users\nicol\RiderProjects\SEP6\SEP6\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
 using Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
 using SEP6.Temporary;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/MovieOverview")]
+#nullable restore
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/MovieOverview")]
     public partial class MovieOverview : LayoutComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
 #nullable restore
-#line 108 "D:\SEM6\SEP6\Project\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 172 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
        
+    protected override async Task OnInitializedAsync()
+    {
+        if (DataSession.MovieDetails != null)
+        {
+            await LoadCastData();
+        }
+    }
+
+    private async Task LoadCastData()
+    {
+        var movieId = DataSession.MovieDetails.Id;
+        var credits = await TmdbClient.GetMovieCredits(movieId);
+
+        if (credits != null && credits.Cast != null)
+        {
+            DataSession.MovieDetails.Credits = credits;
+            DataSession.MovieDetails.TopActors = credits.Cast.Take(10).ToList();
+        }
+
+        StateHasChanged();
+    }
+    
+    private void OpenCastMemberOverview(CastMember castMember)
+    {
+        DataSession.CastMember = castMember;
+        NavigationManager.NavigateTo("ActorOverview");
+    }
+
     private void NavigateBack()
     {
         NavigationManager.NavigateTo("/MovieList");
@@ -122,6 +157,7 @@ using SEP6.Temporary;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
     }

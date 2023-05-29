@@ -1,8 +1,10 @@
 ﻿@page "/MovieOverview"
 @using Entities
 @using SEP6.Temporary
+@using Domain
 @inject DataSession DataSession
 @inject NavigationManager NavigationManager
+@inject IApiRetriever TmdbClient
 @inherits LayoutComponentBase
 
 <h3 style="text-align: center; color: white">Movie Overview</h3>
@@ -11,7 +13,7 @@
     <div class="poster-container">
         @if (!string.IsNullOrEmpty(DataSession.MovieDetails.PosterPath))
         {
-            <img class="poster" src="https://image.tmdb.org/t/p/original/@DataSession.Instance.MovieDetails.PosterPath" alt="@DataSession.Instance.MovieDetails.Title" />
+            <img class="poster" src="https://image.tmdb.org/t/p/original/@DataSession.MovieDetails.PosterPath" alt="@DataSession.MovieDetails.Title" />
         }
         else
         {
@@ -20,15 +22,36 @@
     </div>
     <div class="movie-details">
         <div class="info-container">
-            <h4 class="movie-title">@DataSession.Instance.MovieDetails.Title</h4>
-            <p><strong>Release Date:</strong> @DataSession.Instance.MovieDetails.ReleaseDate</p>
-            <p><strong>Vote Average:</strong> @DataSession.Instance.MovieDetails.VoteAverage</p>
-            <p><strong>Vote Count:</strong> @DataSession.Instance.MovieDetails.VoteCount</p>
+            <h4 class="movie-title">@DataSession.MovieDetails.Title</h4>
+            <p><strong>Release Date:</strong> @DataSession.MovieDetails.ReleaseDate</p>
+            <p><strong>Vote Average:</strong> @DataSession.MovieDetails.VoteAverage</p>
+            <p><strong>Vote Count:</strong> @DataSession.MovieDetails.VoteCount</p>
             <p><strong>Overview:</strong></p>
-            <p>@DataSession.Instance.MovieDetails.Overview</p>
+            <p>@DataSession.MovieDetails.Overview</p>
         </div>
     </div>
 </div>
+
+@if (DataSession.MovieDetails.TopActors != null && DataSession.MovieDetails.TopActors.Any())
+{
+    <div class="cast-container">
+        <h4 class="cast-title">Cast</h4>
+        <div class="slideshow">
+            <div class="slide-container">
+                @foreach (var actor in DataSession.MovieDetails.TopActors)
+                {
+                    <div class="slide" @onclick="()=>OpenCastMemberOverview(actor)">
+                        @if (!string.IsNullOrEmpty(actor.ProfilePicturePath))
+                        {
+                            <img class="cast-image" src="https://image.tmdb.org/t/p/w185/@actor.ProfilePicturePath" alt="@actor.FullName" />
+                        }
+                        <p class="cast-name">@actor.FullName</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
 
 <div class="back-button">
     <button class="btn-back" @onclick="NavigateBack">Back</button>
@@ -88,6 +111,47 @@
         color: white;
     }
 
+    .cast-container {
+        margin-top: 30px;
+    }
+
+    .cast-title {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+    }
+
+    .slideshow {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        margin-top: 20px;
+    }
+
+    .slide-container {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .slide {
+        width: 200px;
+        margin: 10px;
+        text-align: center;
+        cursor:pointer;
+    }
+
+    .cast-image {
+        width: 150px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .cast-name {
+        margin-top: 5px;
+        color: white;
+    }
+
     .back-button {
         position: absolute;
         top: 10px;
@@ -106,6 +170,34 @@
 </style>
 
 @code {
+    protected override async Task OnInitializedAsync()
+    {
+        if (DataSession.MovieDetails != null)
+        {
+            await LoadCastData();
+        }
+    }
+
+    private async Task LoadCastData()
+    {
+        var movieId = DataSession.MovieDetails.Id;
+        var credits = await TmdbClient.GetMovieCredits(movieId);
+
+        if (credits != null && credits.Cast != null)
+        {
+            DataSession.MovieDetails.Credits = credits;
+            DataSession.MovieDetails.TopActors = credits.Cast.Take(10).ToList();
+        }
+
+        StateHasChanged();
+    }
+    
+    private void OpenCastMemberOverview(CastMember castMember)
+    {
+        DataSession.CastMember = castMember;
+        NavigationManager.NavigateTo("ActorOverview");
+    }
+
     private void NavigateBack()
     {
         NavigationManager.NavigateTo("/MovieList");

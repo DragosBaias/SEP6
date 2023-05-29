@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace SEP6
+namespace SEP6.Pages
 {
     #line hidden
     using System;
@@ -89,13 +89,72 @@ using Microsoft.AspNetCore.Components.Routing;
 #line default
 #line hidden
 #nullable disable
-    public partial class App : global::Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
+using Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
+using SEP6.Temporary;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/ActorOverview")]
+    public partial class ActorOverview : LayoutComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 175 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
+       
+    protected override async Task OnInitializedAsync()
+    {
+        if (DataSession.CastMember != null)
+        {
+            await LoadMostPopularMovies();
+        }
+    }
+
+    private async Task LoadMostPopularMovies()
+    {
+        var actorId = DataSession.CastMember.Id;
+        var movies = new List<MovieDetails>();//await TmdbClient.GetMostPopularMoviesByActor(actorId);
+
+        if (movies != null)
+        {
+            DataSession.CastMember.MostPopularMovies = movies;
+        }
+        else
+            Console.WriteLine("movies is null");
+
+        StateHasChanged();
+    }
+
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/ActorList");
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
     }
 }
 #pragma warning restore 1591
