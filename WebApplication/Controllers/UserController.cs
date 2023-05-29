@@ -40,7 +40,6 @@ namespace WebApplication.Controllers
             try
             {
                 await _data.RegisterUser(user);
-                
                 return Ok();
             }catch (Exception e) {
                 Console.WriteLine(e);
