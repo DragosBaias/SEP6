@@ -37,7 +37,6 @@ namespace WebApplication.Controllers
         [Route("register")]
         public async Task<ActionResult> RegisterUser([FromBody] User user)
         {
-            throw new Exception("asdffsggsd");
             try
             {
                 await _data.RegisterUser(user);
