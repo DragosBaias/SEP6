@@ -132,7 +132,7 @@ using Domain;
     private async Task LoadMostPopularMovies()
     {
         var actorId = DataSession.CastMember.Id;
-        var movies = await TmdbClient.GetMostPopularMoviesByActor(actorId);
+        var movies = new List<MovieDetails>();//await TmdbClient.GetMostPopularMoviesByActor(actorId);
 
         if (movies != null)
         {
