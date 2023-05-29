@@ -258,3 +258,5 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieOver
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieOverview.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\ActorOverview.razor.g.cs
 C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\ActorOverview.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\bin\Debug\net5.0\Microsoft.ApplicationInsights.dll
+C:\Users\nicol\RiderProjects\SEP6\SEP6\bin\Debug\net5.0\Microsoft.Extensions.Logging.ApplicationInsights.dll
