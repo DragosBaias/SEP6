@@ -109,6 +109,13 @@ using Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/register")]
     public partial class Register : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -118,7 +125,7 @@ using Entities;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
+#line 42 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\Register.razor"
        
     private User user = new User();
     private string confirmPassword;
@@ -148,7 +155,7 @@ using Entities;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient MyApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever MyApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }
