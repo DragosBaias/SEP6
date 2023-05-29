@@ -175,7 +175,7 @@ using SEP6.Data;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient ApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever ApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
     }
