@@ -74,3 +74,5 @@ D:\SEM6\SEP6\Project\SEP6\WebApplication\obj\Debug\net5.0\WebApplication.dll
 D:\SEM6\SEP6\Project\SEP6\WebApplication\obj\Debug\net5.0\ref\WebApplication.dll
 D:\SEM6\SEP6\Project\SEP6\WebApplication\obj\Debug\net5.0\WebApplication.pdb
 D:\SEM6\SEP6\Project\SEP6\WebApplication\obj\Debug\net5.0\WebApplication.genruntimeconfig.cache
+D:\SEM6\SEP6\Project\SEP6\WebApplication\bin\Debug\net5.0\Microsoft.ApplicationInsights.dll
+D:\SEM6\SEP6\Project\SEP6\WebApplication\bin\Debug\net5.0\Microsoft.Extensions.Logging.ApplicationInsights.dll

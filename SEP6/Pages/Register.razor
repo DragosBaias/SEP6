@@ -2,7 +2,6 @@
 @using SEP6.Data
 @using Microsoft.AspNetCore.Components
 @using Entities
-@using Microsoft.Extensions.Logging
 @inject NavigationManager Navigation
 @inject MyApiClient MyApiClient
 @inject IJSRuntime JsRuntime
@@ -42,7 +41,6 @@
 @code {
     private User user = new User();
     private string confirmPassword;
-    private readonly ILogger _logger;
 
     private async Task RegisterUser()
     {
@@ -55,13 +53,13 @@
         try
         {
             await MyApiClient.RegisterUser(user);
-            _logger.LogInformation("ADRIAN");
+            // Registration successful, navigate to login page
             Navigation.NavigateTo("/login");
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            _logger.LogInformation("ADRIAN");
+            // Handle registration error
         }
     }
 }
