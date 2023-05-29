@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Domain;
 using Entities;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 
 public class TMDBApiClient:IApiRetriever
@@ -105,8 +106,23 @@ public class TMDBApiClient:IApiRetriever
         var movieDetails = JsonConvert.DeserializeObject<MovieDetails>(responseBody);
         return movieDetails;
     }
-}
 
+    public async Task<MovieCredits> GetMovieCredits(string movieId)
+    {
+        var url = $"movie/{movieId}/credits?api_key={_apiKey}";
+
+        var response = await _httpClient.GetAsync(url);
+        response.EnsureSuccessStatusCode();
+
+        var content = await response.Content.ReadAsStringAsync();
+
+        var credits = JsonConvert.DeserializeObject<MovieCredits>(content);
+
+        return credits;
+    }
+    
+    
+   }
 
 public class MovieListResponse
 {

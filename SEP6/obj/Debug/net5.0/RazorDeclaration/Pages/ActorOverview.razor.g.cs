@@ -90,28 +90,28 @@ using Microsoft.AspNetCore.Components.Routing;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
 using Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
 using SEP6.Temporary;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 4 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
 using Domain;
 
 #line default
 #line hidden
 #nullable disable
-    [global::Microsoft.AspNetCore.Components.RouteAttribute("/MovieOverview")]
-    public partial class MovieOverview : LayoutComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/ActorOverview")]
+    public partial class ActorOverview : LayoutComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -119,39 +119,34 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 172 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 175 "C:\Users\nicol\RiderProjects\SEP6\SEP6\Pages\ActorOverview.razor"
        
     protected override async Task OnInitializedAsync()
     {
-        if (DataSession.MovieDetails != null)
+        if (DataSession.CastMember != null)
         {
-            await LoadCastData();
+            await LoadMostPopularMovies();
         }
     }
 
-    private async Task LoadCastData()
+    private async Task LoadMostPopularMovies()
     {
-        var movieId = DataSession.MovieDetails.Id;
-        var credits = await TmdbClient.GetMovieCredits(movieId);
+        var actorId = DataSession.CastMember.Id;
+        var movies = await TmdbClient.GetMostPopularMoviesByActor(actorId);
 
-        if (credits != null && credits.Cast != null)
+        if (movies != null)
         {
-            DataSession.MovieDetails.Credits = credits;
-            DataSession.MovieDetails.TopActors = credits.Cast.Take(10).ToList();
+            DataSession.CastMember.MostPopularMovies = movies;
         }
+        else
+            Console.WriteLine("movies is null");
 
         StateHasChanged();
-    }
-    
-    private void OpenCastMemberOverview(CastMember castMember)
-    {
-        DataSession.CastMember = castMember;
-        NavigationManager.NavigateTo("ActorOverview");
     }
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo("/MovieList");
+        NavigationManager.NavigateTo("/ActorList");
     }
 
 #line default

@@ -256,3 +256,5 @@ D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\Domain.dll
 D:\SEM6\SEP6\Project\SEP6\SEP6\bin\Debug\net5.0\Domain.pdb
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\MovieOverview.razor.g.cs
 D:\SEM6\SEP6\Project\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\MovieOverview.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\ActorOverview.razor.g.cs
+C:\Users\nicol\RiderProjects\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\ActorOverview.razor.g.cs
