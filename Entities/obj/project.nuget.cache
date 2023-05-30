@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "b+mkCEhJOcUKBQHw4Wl7evECCTqdJ/twCbv4h31L/E/qpl34uCKEJSK6bitOZuoOw5mHA5PI1Zp45rQy3CEXBw==",
+  "dgSpecHash": "PKrJ4D24SKV1Akx6NcdKR+ol6jgTo9ICeIoNjaapHFtILHIOJqzKA7OMLCHiZffBx2TcpveK+iL5qEK8rmlWPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+  "projectFilePath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nicol\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

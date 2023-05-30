@@ -1,0 +1,46 @@
+.registerContainer[b-a6qadzzod1] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.registerContainer .formContainer label[b-a6qadzzod1] {
+    color: white;
+}
+
+.registerContainer .text-center a[b-a6qadzzod1] {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.registerContainer .custom-button[b-a6qadzzod1] {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.logo-container[b-a6qadzzod1] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: -50px;
+}
+
+.logo-img[b-a6qadzzod1] {
+    width: 930px;
+    height: auto;
+}

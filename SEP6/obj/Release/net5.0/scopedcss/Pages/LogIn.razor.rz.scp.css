@@ -1,0 +1,53 @@
+.loginContainer[b-iwscbyh8bk] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.loginContainer .formContainer label[b-iwscbyh8bk] {
+    color: white;
+}
+
+.loginContainer .text-center a[b-iwscbyh8bk] {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.loginContainer .custom-button[b-iwscbyh8bk] {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.loginContainer .register-link[b-iwscbyh8bk] {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+.logo-container[b-iwscbyh8bk] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: -200px;
+}
+
+.logo-img[b-iwscbyh8bk] {
+    width: 930px;
+    height: auto;
+}
