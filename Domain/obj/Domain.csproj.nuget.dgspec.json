@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj": {}
+    "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj": {
+    "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj"
+              "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj"
               }
             }
           }
@@ -60,18 +60,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
+    "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -132,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

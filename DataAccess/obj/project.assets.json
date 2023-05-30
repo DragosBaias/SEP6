@@ -9446,11 +9446,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SEP6\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\nicol\\source\\repos\\SEP6\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\DataAccess\\DataAccess.csproj",
+      "projectPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9461,6 +9461,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://nuget.telerik.com/v3/index.json": {}
       },
@@ -9468,11 +9469,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Domain\\Domain.csproj"
+            "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\nicol\\RiderProjects\\SEP6\\Entities\\Entities.csproj"
+            "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\nicol\\source\\repos\\SEP6\\Entities\\Entities.csproj"
             }
           }
         }
@@ -9561,7 +9562,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
