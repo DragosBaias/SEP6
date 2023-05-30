@@ -1,3 +1,4 @@
+
 using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,11 +26,7 @@ namespace SEP6
             services.AddSingleton<IApiRetriever,TMDBApiClient>(_ => new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857"));
             services.AddAuthorizationCore();
             services.AddSingleton(DataSession.Instance);
-            services.AddSingleton(provider =>
-            {
-                var baseUrl = Configuration.GetValue<string>("MyApiClient:BaseUrl");
-                return new MyApiClient(baseUrl);
-            });
+            services.AddSingleton<IDatabaseRetriever, DatabaseDataRetriever>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -2,8 +2,9 @@
 @using SEP6.Data
 @using Microsoft.AspNetCore.Components
 @using Entities
+@using Domain
 @inject NavigationManager Navigation
-@inject MyApiClient MyApiClient
+@inject IDatabaseRetriever DatabaseRetriever
 @inject IJSRuntime JsRuntime
 
 <div class="registerContainer">
@@ -52,7 +53,7 @@
 
         try
         {
-            await MyApiClient.RegisterUser(user);
+            await DatabaseRetriever.RegisterUser(user);
             // Registration successful, navigate to login page
             Navigation.NavigateTo("/login");
         }

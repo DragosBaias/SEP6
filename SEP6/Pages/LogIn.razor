@@ -1,8 +1,9 @@
 ﻿@page "/login"
 @using SEP6.Data
 @using SEP6.Temporary
+@using Domain
 @inject NavigationManager Navigation
-@inject MyApiClient MyApiClient
+@inject IDatabaseRetriever DatabaseRetriever
 @inject DataSession DataSession
 
 <div class="loginContainer">
@@ -37,7 +38,7 @@
     {
         try
         {
-            DataSession.User=await MyApiClient.LogIn(username, password);
+            DataSession.User=await DatabaseRetriever.LogIn(username, password);
     // Login successful, navigate to home page or another desired page
             Navigation.NavigateTo("/movielist");
         }
