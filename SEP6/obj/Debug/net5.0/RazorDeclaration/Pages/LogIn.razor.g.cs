@@ -128,7 +128,7 @@ using Domain;
     {
         try
         {
-            DataSession.User=await MyApiClient.LogIn(username, password);
+            DataSession.User=await DatabaseRetriever.LogIn(username, password);
     // Login successful, navigate to home page or another desired page
             Navigation.NavigateTo("/movielist");
         }
@@ -143,7 +143,7 @@ using Domain;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever MyApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever DatabaseRetriever { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }

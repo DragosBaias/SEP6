@@ -217,7 +217,7 @@ using SEP6.Data;
     
     private async Task AddToFavorites(MovieDetails movie)
     {
-        await ApiClient.AddMovie(new Movie { ID = 0,MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID});
+        await DatabaseRetriever.AddMovie(new Movie { ID = 0,MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID});
     }
 
     private void OpenFavouriteMovies()
@@ -235,7 +235,7 @@ using SEP6.Data;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever ApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever DatabaseRetriever { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever _tmdbApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }

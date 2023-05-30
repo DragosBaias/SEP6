@@ -137,7 +137,7 @@ using SEP6.Data;
 
     private async Task<List<List<MovieDetails>>> LoadLists()
     {
-        List<Entities.MovieList> movieLists = await ApiClient.GetMovieLists();
+        List<Entities.MovieList> movieLists = await DatabaseRetriever.GetMovieLists();
         List<List<MovieDetails>> shownMovies = new List<List<MovieDetails>>();
 
         foreach (var movieList in movieLists)
@@ -175,7 +175,7 @@ using SEP6.Data;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever ApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever DatabaseRetriever { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
     }
