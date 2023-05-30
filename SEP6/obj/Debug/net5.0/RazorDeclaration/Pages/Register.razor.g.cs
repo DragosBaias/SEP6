@@ -140,7 +140,7 @@ using Domain;
 
         try
         {
-            await MyApiClient.RegisterUser(user);
+            await DatabaseRetriever.RegisterUser(user);
             // Registration successful, navigate to login page
             Navigation.NavigateTo("/login");
         }
@@ -155,7 +155,7 @@ using Domain;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever MyApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever DatabaseRetriever { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
     }
 }

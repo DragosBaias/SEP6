@@ -148,7 +148,7 @@ using Microsoft.AspNetCore.Components;
 
         if (string.IsNullOrEmpty(_searchQuery))
         {
-            Entities.MovieList movieList = await ApiClient.GetMovieList(DataSession.User.MovieListID);
+            Entities.MovieList movieList = await DatabaseRetriever.GetMovieList(DataSession.User.MovieListID);
             foreach (var movie in movieList.Movies)
             {
                 _movies.Add(await TmdbClient.GetMovie(movie.MovieID));
@@ -175,12 +175,12 @@ using Microsoft.AspNetCore.Components;
     
     private async Task AddToFavorites(MovieDetails movie)
     {
-        await ApiClient.AddMovieToList(new Movie { MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID });
+        await DatabaseRetriever.AddMovie(new Movie { MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID });
     }
     
     private async Task RemoveFromFavourites (MovieDetails movieDetails)
     {
-        await ApiClient.RemoveMovieFromList(Convert.ToInt32(movieDetails.Id));
+        await DatabaseRetriever.RemoveMovie(Convert.ToInt32(movieDetails.Id));
         await LoadMovies();
     }
     private async Task SearchMovies()
@@ -207,7 +207,7 @@ using Microsoft.AspNetCore.Components;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MyApiClient ApiClient { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever DatabaseRetriever { get; set; }
     }
 }
 #pragma warning restore 1591
