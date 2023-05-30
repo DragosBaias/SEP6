@@ -16,7 +16,7 @@ namespace SEP6.Data
         public DatabaseDataRetriever()
         {
             options = new DbContextOptionsBuilder<ImperiumDBContext>()
-                .UseSqlServer("Server=tcp:imperiummovie.database.windows.net,1433;Initial Catalog=ImpMovieDB;Persist Security Info=False;User ID=CloudSAf3b22f19;Password=m_SCPkB]3\"YZ=*@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
+                .UseSqlServer("Data Source=imperiummovie.database.windows.net;Initial Catalog=ImpMovieDB;User ID=304170@viauc.dk;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;Authentication=\"Active Directory Interactive\";ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
                 .Options;
         }
 
