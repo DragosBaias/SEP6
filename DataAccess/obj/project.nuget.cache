@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+lftyzkozq/HegTp3iIa+dnvhcPtAIy06Hk6R1cC/MV52aUJOPCxc5ECwxqR6OTuIk6Mx6mssTxe1KBDRpXjow==",
+  "dgSpecHash": "fxLNg7p6yZqx12HFkVEqD3JcdmsVVgz1qOwQHymb1tgTkOIL5Yb1FVDIoKL3dvy3W7fS5ClfMLPeR46ymGQFFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\nicol\\source\\repos\\SEP6\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\5.0.17\\microsoft.entityframeworkcore.sqlite.5.0.17.nupkg.sha512",
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\5.0.17\\microsoft.entityframeworkcore.sqlite.core.5.0.17.nupkg.sha512",
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.17\\microsoft.entityframeworkcore.sqlserver.5.0.17.nupkg.sha512",
+    "C:\\Users\\nicol\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.1\\microsoft.entityframeworkcore.tools.5.0.1.nupkg.sha512",
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\nicol\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",

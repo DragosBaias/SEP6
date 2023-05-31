@@ -9,7 +9,7 @@
 @inject NavigationManager NavigationManager
 
 <h3 class="title">Public Lists</h3>
-<p class="invitation">Explore the favorite lists of other users.</p>
+<p class="title">Explore the favorite lists of other users.</p>
 <button class="back-button" @onclick="GoBack">Back</button>
 
 @if (_shownMovies.Count == 0)
@@ -21,58 +21,63 @@ else
     <div class="movie-list">
         @foreach (var movieList in _shownMovies)
         {
-            
-            <div class="movie-list-box">
-                <h3 class="page-title">Favourite list of a user</h3>
-                <div class="movie-list-movies">
-                    @foreach (var movie in movieList)
-                    {
-                        <div class="movie-card" @onclick="() => OpenMovieOverview(movie)">
-                            <div class="movie-poster-container">
-                                @if (!string.IsNullOrEmpty(movie.PosterPath))
-                                {
-                                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
-                                }
-                                else
-                                {
-                                    <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
-                                }
-                            </div>
-                            <div class="movie-details">
-                                <h4 class="movie-title">@movie.Title</h4>
-                                <div class="movie-info">
-                                    <p class="movie-release-date"><strong>Release Date:</strong> @movie.ReleaseDate</p>
-                                    <p class="movie-vote-average"><strong>Vote Average:</strong> @movie.VoteAverage</p>
-                                    <p class="movie-vote-count"><strong>Vote Count:</strong> @movie.VoteCount</p>
+            @if (movieList.movieDetailsList1.Count > 0)
+            {
+                <div class="movie-list-box" @onclick="()=> OpenPublicFavouriteList(movieList)">
+                    <h3 class="page-title">Favourite list of @movieList.username</h3>
+                    <div class="movie-list-movies">
+                        @foreach (var movie in movieList.movieDetailsList1.Take(3))
+                        {
+                            <div class="movie-card" @onclick="() => OpenMovieOverview(movie)">
+                                <div class="movie-poster-container">
+                                    @if (!string.IsNullOrEmpty(movie.PosterPath))
+                                    {
+                                        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
+                                    }
+                                    else
+                                    {
+                                        <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
+                                    }
+                                </div>
+                                <div class="movie-details">
+                                    <h4 class="movie-title">@movie.Title</h4>
+                                    <div class="movie-info">
+                                        <p class="movie-release-date"><strong>Release Date:</strong> @movie.ReleaseDate</p>
+                                        <p class="movie-vote-average"><strong>Vote Average:</strong> @movie.VoteAverage</p>
+                                        <p class="movie-vote-count"><strong>Vote Count:</strong> @movie.VoteCount</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
             </div>
+            }
         }
     </div>
 }
 
 @code {
-    private List<List<MovieDetails>> _shownMovies = new();
+    private List<TempMovieList> _shownMovies = new();
 
     protected override async Task OnInitializedAsync()
     {
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("Login");
         _shownMovies = await LoadLists();
     }
 
-    private async Task<List<List<MovieDetails>>> LoadLists()
+    private async Task<List<TempMovieList>> LoadLists()
     {
+        List<User> Users = await DatabaseRetriever.GetUsers();
         List<Entities.MovieList> movieLists = await DatabaseRetriever.GetMovieLists();
-        List<List<MovieDetails>> shownMovies = new List<List<MovieDetails>>();
+        List<TempMovieList> shownMovies = new List<TempMovieList>();
 
-        foreach (var movieList in movieLists)
+        foreach (var user in Users)
         {
-            if(movieList.Movies != null)
+            if(user.MovieList.Movies != null)
             {
                 List<MovieDetails> movieDetailsList = new List<MovieDetails>();
-                foreach (var movie in movieList.Movies.Take(3))
+                foreach (var movie in user.MovieList.Movies)
                 {
                     if(movie != null)
                     {
@@ -80,22 +85,31 @@ else
                         movieDetailsList.Add(movieDetails);
                     }
                 }
-                shownMovies.Add(movieDetailsList);
+                shownMovies.Add(new TempMovieList { username = user.Username, movieDetailsList1 = movieDetailsList });
             }
         }
 
         return shownMovies;
     }
+
     
+
     private void OpenMovieOverview(MovieDetails movie)
     {
-        DataSession.Instance.MovieDetails = movie;
+        DataSession.MovieDetails = movie;
+        DataSession.LastLink = "/PublicLists";
         NavigationManager.NavigateTo("/MovieOverview");
     }
-    
+
     private void GoBack()
     {
         NavigationManager.NavigateTo("/MovieList");
+    }
+
+    private void OpenPublicFavouriteList( TempMovieList movieList)
+    {
+        DataSession.TempMovieList = movieList;
+        NavigationManager.NavigateTo("PublicFavouriteList");
     }
 }
 
@@ -121,6 +135,7 @@ else
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: flex-start;
+                
             }
         
             .movie-list-box {
@@ -129,6 +144,7 @@ else
                 background-color: #1a1a1a;
                 border-radius: 5px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
             }
         
             .movie-list-movies {

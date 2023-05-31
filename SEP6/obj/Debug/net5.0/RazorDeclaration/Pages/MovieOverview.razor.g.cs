@@ -119,14 +119,18 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 172 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\MovieOverview.razor"
+#line 173 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\MovieOverview.razor"
        
     protected override async Task OnInitializedAsync()
     {
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("LogIn");
         if (DataSession.MovieDetails != null)
         {
             await LoadCastData();
         }
+        else
+            NavigationManager.NavigateTo("MovieList");
     }
 
     private async Task LoadCastData()
@@ -137,21 +141,22 @@ using Domain;
         if (credits != null && credits.Cast != null)
         {
             DataSession.MovieDetails.Credits = credits;
+            DataSession.MovieDetails.Director = credits.Crew.First(m => m.Job.Equals("Director")).FullName;
             DataSession.MovieDetails.TopActors = credits.Cast.Take(10).ToList();
         }
 
         StateHasChanged();
     }
-    
-    private void OpenCastMemberOverview(CastMember castMember)
+
+    private async void OpenCastMemberOverview(CastMember castMember)
     {
-        DataSession.CastMember = castMember;
+        DataSession.Actor = await TmdbClient.GetActorInformation(int.Parse(castMember.Id));
         NavigationManager.NavigateTo("ActorOverview");
     }
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo("/MovieList");
+        NavigationManager.NavigateTo(DataSession.LastLink);
     }
 
 #line default

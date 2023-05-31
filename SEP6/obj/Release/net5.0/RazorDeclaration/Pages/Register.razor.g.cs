@@ -132,6 +132,11 @@ using Domain;
 
     private async Task RegisterUser()
     {
+        if(user.Username== null || user.Name == null)
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Please fill all the fields");
+            return;
+        }
         if (user.Password != confirmPassword)
         {
             await JsRuntime.InvokeVoidAsync("alert", "The two passwords do not match.");
@@ -141,13 +146,11 @@ using Domain;
         try
         {
             await DatabaseRetriever.RegisterUser(user);
-            // Registration successful, navigate to login page
             Navigation.NavigateTo("/login");
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            // Handle registration error
         }
     }
 

@@ -8,7 +8,10 @@ namespace SEP6.Temporary
         public MovieDetails MovieDetails { get; set; }
         public User User { get; set; }
         public string LastLink { get; set; }
-        public CastMember CastMember { get; set; }
+        public Actor Actor { get; set; }
+
+        public TempMovieList TempMovieList { get; set; }
+
 
         private DataSession()
         {

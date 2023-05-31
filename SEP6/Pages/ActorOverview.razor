@@ -1,62 +1,41 @@
 ﻿@page "/ActorOverview"
 @using Entities
 @using SEP6.Temporary
+@using SEP6.Data
 @using Domain
 @inject DataSession DataSession
 @inject NavigationManager NavigationManager
 @inject IDatabaseRetriever DatabaseRetriever
 @inherits LayoutComponentBase
 
-<h3 style="text-align: center; color: white">Actor Overview</h3>
+<div class="container">
+    <h3 class="page-title">Actor Overview</h3>
 
-@if (DataSession.CastMember != null)
-{
-    <div class="actor-card">
-        <div class="profile-container">
-            @if (!string.IsNullOrEmpty(DataSession.CastMember.ProfilePicturePath))
-            {
-                <img class="profile-picture" src="https://image.tmdb.org/t/p/w185/@DataSession.CastMember.ProfilePicturePath" alt="@DataSession.CastMember.FullName" />
-            }
-            else
-            {
-                <img class="fallback-picture" src="fallback-image.jpg" alt="No Picture Available" />
-            }
-        </div>
-        <div class="actor-details">
-            <div class="info-container">
-                <h4 class="actor-name">@DataSession.CastMember.FullName</h4>
-            </div>
-        </div>
-    </div>
-
-    @if (DataSession.CastMember.MostPopularMovies != null && DataSession.CastMember.MostPopularMovies.Any())
+    @if (DataSession.Actor != null)
     {
-        <div class="movies-container">
-            <h4 class="movies-title">Most Popular Movies</h4>
-            <div class="slideshow">
-                <div class="slide-container">
-                    @foreach (var movie in DataSession.CastMember.MostPopularMovies)
+        <div class="actor-card">
+            <div class="profile-container">
+                <div class="profile-picture-container">
+                    @if (!string.IsNullOrEmpty(DataSession.Actor.ProfilePicturePath))
                     {
-                        <div class="slide">
-                            @if (!string.IsNullOrEmpty(movie.PosterPath))
-                            {
-                                <img class="movie-poster" src="https://image.tmdb.org/t/p/w185/@movie.PosterPath" alt="@movie.Title" />
-                            }
-                            else
-                            {
-                                <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available" />
-                            }
-                            <p class="movie-title">@movie.Title</p>
-                        </div>
+                        <img class="profile-picture" src="https://image.tmdb.org/t/p/w185/@DataSession.Actor.ProfilePicturePath" alt="@DataSession.Actor.Name" />
+                    }
+                    else
+                    {
+                        <img class="fallback-picture" src="fallback-image.jpg" alt="No Picture Available" />
                     }
                 </div>
             </div>
+            <div class="actor-details">
+                <h4 class="actor-name">@DataSession.Actor.Name</h4>
+                <p class="actor-bio">@DataSession.Actor.Biography</p>
+            </div>
         </div>
     }
-}
 
-<div class="back-button">
-    <button class="btn-back" @onclick="NavigateBack">Back</button>
+    <div class="back-button">
+        <button class="btn-back" @onclick="NavigateBack">Back</button>
+    </div>
 </div>
 
 <style>
@@ -75,21 +54,37 @@
         padding: 20px;
     }
 
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .page-title {
+        text-align: center;
+        color: whitesmoke;
+        margin-bottom: 30px;
+    }
+
     .actor-card {
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 800px;
-        margin: 0 auto;
         padding: 20px;
-        background-color: transparent;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .profile-container {
         width: 50%;
         margin-bottom: 20px;
+    }
+
+    .profile-picture-container {
+        display: flex;
+        justify-content: center;
     }
 
     .profile-picture, .fallback-picture {
@@ -100,74 +95,31 @@
 
     .actor-details {
         width: 100%;
-        color: white;
-    }
-
-    .info-container {
-        padding-top: 20px;
+        text-align: center;
     }
 
     .actor-name {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 10px;
-        color: white;
+        color: whitesmoke;
     }
 
-    .movies-container {
-        margin-top: 30px;
-    }
-
-    .movies-title {
-        font-size: 20px;
-        text-align: center;
-        color: white;
-    }
-
-    .slideshow {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-    }
-
-    .slide-container {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
-    .slide {
-        width: 200px;
-        margin: 10px;
-        text-align: center;
-        scroll-snap-align: start;
-    }
-
-    .movie-poster, .fallback-poster {
-        width: 150px;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    .movie-title {
-        margin-top: 5px;
-        color: white;
+    .actor-bio {
+        color: whitesmoke;
     }
 
     .back-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
+        margin-top: 30px;
+        text-align: center;
     }
 
     .btn-back {
-        padding: 5px 10px;
+        padding: 10px 20px;
         background-color: #ff6b6b;
         color: #fff;
         border: none;
         border-radius: 3px;
-        margin: 25px;
         cursor: pointer;
     }
 </style>
@@ -175,29 +127,17 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        if (DataSession.CastMember != null)
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("/LogIn");
+
+        if (DataSession.Actor == null)
         {
-            await LoadMostPopularMovies();
+            NavigationManager.NavigateTo("/Movielist");
         }
-    }
-
-    private async Task LoadMostPopularMovies()
-    {
-        var actorId = DataSession.CastMember.Id;
-        var movies = new List<MovieDetails>();//await TmdbClient.GetMostPopularMoviesByActor(actorId);
-
-        if (movies != null)
-        {
-            DataSession.CastMember.MostPopularMovies = movies;
-        }
-        else
-            Console.WriteLine("movies is null");
-
-        StateHasChanged();
     }
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo("/ActorList");
+        NavigationManager.NavigateTo("/MovieOverview");
     }
 }

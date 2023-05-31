@@ -23,9 +23,11 @@ namespace Entities
 
         [JsonProperty("popularity")]
         public double Popularity { get; set; }
+        [JsonIgnore]
         public List<CastMember> TopActors { get; set; }
-
-        [JsonIgnore] // Exclude from JSON serialization
+        [JsonIgnore]
+        public string Director { get; set; }
+        [JsonIgnore] 
         public MovieCredits Credits { get; set; }
     }
 
@@ -34,6 +36,8 @@ namespace Entities
         public string Id { get; set; }
         [JsonProperty("cast")]
         public List<CastMember> Cast { get; set; }
+        [JsonProperty("crew")]
+        public List<CastMember> Crew { get; set; }
         [JsonProperty("popularity")]
         public double Popularity { get; set; }
     }
@@ -58,8 +62,10 @@ namespace Entities
 
         [JsonProperty("profile_path")]
         public string ProfilePicturePath { get; set; }
+        [JsonProperty("job")]
+        public string Job { get; set; }
         
-        [JsonIgnore] // Exclude from JSON serialization
+        [JsonIgnore] 
         public List<MovieDetails> MostPopularMovies { get; set; }
     }
 }

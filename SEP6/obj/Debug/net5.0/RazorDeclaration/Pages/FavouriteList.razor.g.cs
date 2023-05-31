@@ -89,35 +89,35 @@ using Microsoft.AspNetCore.Components.Routing;
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 7 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
 using SEP6.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 8 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
 using SEP6.Temporary;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 9 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
 using Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 10 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
 using Domain;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 11 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
 using Microsoft.AspNetCore.Components;
 
 #line default
@@ -132,17 +132,19 @@ using Microsoft.AspNetCore.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 75 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
+#line 76 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\FavouriteList.razor"
        
     private  List<MovieDetails> _movies = new();
     private string _searchQuery = string.Empty;
     private bool _searchMode = false;
-    
+
     protected override async Task OnInitializedAsync()
     {
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("LogIn");
         await LoadMovies();
     }
-    
+
     private async Task LoadMovies()
     {
 
@@ -161,25 +163,29 @@ using Microsoft.AspNetCore.Components;
             _movies = moviesByTitle;
         }
     }
-    
+
     private void NavigateBack()
     {
         NavigationManager.NavigateTo("/MovieList");
     }
-    
+
     private void OpenMovieOverview(MovieDetails movie)
     {
         DataSession.Instance.MovieDetails = movie;
+        DataSession.LastLink = "/FavouriteList";
         NavigationManager.NavigateTo("/MovieOverview");
     }
-    
+
     private async Task AddToFavorites(MovieDetails movie)
     {
         await DatabaseRetriever.AddMovie(new Movie { MovieID = Convert.ToInt32(movie.Id),MovieListID = DataSession.User.MovieListID });
     }
-    
+
     private async Task RemoveFromFavourites (MovieDetails movieDetails)
     {
+        if (!await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to remove this movie from the favourite ones?")){
+            return;
+        }
         await DatabaseRetriever.RemoveMovie(Convert.ToInt32(movieDetails.Id));
         await LoadMovies();
     }
@@ -204,6 +210,7 @@ using Microsoft.AspNetCore.Components;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever TmdbClient { get; set; }

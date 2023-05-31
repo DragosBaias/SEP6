@@ -17,6 +17,6 @@ namespace Domain
         public Task<List<MovieDetails>> GetHoFMovie();
         Task<MovieDetails> GetMovie(int movieMovieId);
         Task<MovieCredits> GetMovieCredits(string movieId);
-        //public Task<List<MovieDetails>> GetMostPopularMoviesByActor(string actorId);
+        Task<Actor> GetActorInformation(int castId);
     }
 }

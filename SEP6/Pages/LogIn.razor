@@ -5,6 +5,7 @@
 @inject NavigationManager Navigation
 @inject IDatabaseRetriever DatabaseRetriever
 @inject DataSession DataSession
+@inject IJSRuntime JsRuntime
 
 <div class="loginContainer">
     <div class="logo-container">
@@ -34,18 +35,35 @@
     private string username;
     private string password;
 
+    private void OnInitialized()
+    {
+        DataSession.User = null;
+        DataSession.LastLink = "";
+        DataSession.Actor = null;
+        DataSession.MovieDetails = null;
+        DataSession.TempMovieList = null;
+    }
+
     private async Task LogInUser()
     {
         try
         {
             DataSession.User=await DatabaseRetriever.LogIn(username, password);
-    // Login successful, navigate to home page or another desired page
-            Navigation.NavigateTo("/movielist");
+            if (DataSession.User == null)
+            {
+                await JsRuntime.InvokeVoidAsync("alert", "The credentials are incorrect.");
+                await OnInitializedAsync();
+            }
+            else
+            {
+                DataSession.LastLink = "/movielist";
+                Navigation.NavigateTo("/movielist");
+            }
+
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-    // Handle login error
         }
     }
 }

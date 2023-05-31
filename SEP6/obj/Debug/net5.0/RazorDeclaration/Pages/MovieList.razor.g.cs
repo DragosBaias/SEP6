@@ -126,7 +126,7 @@ using SEP6.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 365 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\MovieList.razor"
+#line 366 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\MovieList.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
     private int _currentPage = 1;
@@ -135,6 +135,8 @@ using SEP6.Data;
 
     protected override async Task OnInitializedAsync()
     {
+        if (DataSession.User == null)
+            Navigation.NavigateTo("LogIn");
         await LoadMovies();
     }
 
@@ -203,7 +205,7 @@ using SEP6.Data;
     {
         _searchMode = true;
     }
-    
+
     private void OpenHallOfFame()
     {
         Navigation.NavigateTo("HallOfFame");
@@ -212,6 +214,7 @@ using SEP6.Data;
     private void OpenMovieOverview(MovieDetails movie)
     {
         DataSession.Instance.MovieDetails = movie;
+        DataSession.LastLink = "/MovieList";
         Navigation.NavigateTo("/MovieOverview");
     }
     
