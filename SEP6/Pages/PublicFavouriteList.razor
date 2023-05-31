@@ -1,0 +1,239 @@
+﻿@page "/PublicFavouriteList"
+@inject IDatabaseRetriever DatabaseRetriever
+@inject IApiRetriever TmdbClient
+@inject DataSession DataSession
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
+@using SEP6.Data
+@using SEP6.Temporary
+@using Entities
+@using Domain
+@using Microsoft.AspNetCore.Components
+
+
+<h1 class="title">The list of favorite movies of @DataSession.TempMovieList.username</h1>
+ 
+<div class="back-button">
+    <button class="btn-back" @onclick="NavigateBack">Back</button>
+</div>
+
+
+<div class="movie-list">
+    @foreach (var movie in _movies)
+    {
+        @if (movie != null)
+        {
+            <div class="movie-card" @onclick="()=>OpenMovieOverview(movie)">
+                <div class="movie-poster-container">
+                    @if (!string.IsNullOrEmpty(movie.PosterPath))
+                    {
+                        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/@movie.PosterPath" alt="@movie.Title"/>
+                    }
+                    else
+                    {
+                        <img class="fallback-poster" src="fallback-image.jpg" alt="No Poster Available"/>
+                    }
+                </div>
+                <div class="movie-details">
+                    <h4 class="movie-title">@(movie.Title)</h4>
+                    <div class="movie-info">
+                        <p class="movie-release-date"><strong><em>Release Date:</em></strong> <em>@movie.ReleaseDate</em></p>
+                        <p class="movie-vote-average"><strong><em>Vote Average:</em></strong> <em>@movie.VoteAverage</em></p>
+                        <p class="movie-vote-count"><strong><em>Vote Count:</em></strong> <em>@movie.VoteCount</em></p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private  List<MovieDetails> _movies = new();
+    private string _searchQuery = string.Empty;
+    private bool _searchMode = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("LogIn");
+        await LoadMovies();
+    }
+
+    private async Task LoadMovies()
+    {
+        _movies = DataSession.TempMovieList.movieDetailsList1;
+    }
+
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/PublicLists");
+    }
+
+    private void OpenMovieOverview(MovieDetails movie)
+    {
+        DataSession.Instance.MovieDetails = movie;
+        DataSession.LastLink = "/PublicFavouriteList";
+        NavigationManager.NavigateTo("/MovieOverview");
+    }
+
+}
+
+<style>
+    .custom-button {
+        background-color: #ff6b6b;
+        color: #ffffff;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    body {
+        background-image: url('images/Background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    
+        .btn-back {
+            padding: 5px 10px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin: 25px;
+            cursor: pointer;
+        }
+
+    .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .search-bar input {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    
+        .close-button {
+            padding: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    
+        .close-button span {
+            font-size: 12px;
+            line-height: 1;
+        }
+
+    .title {
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 35px;
+            font-family: Amiri,serif;
+            margin: 30px;
+        }
+
+    .logo-simple {
+        width: 300px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .movie-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .movie-card {
+        width: 300px;
+        margin: 20px;
+        padding: 10px;
+        background-color: transparent;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .movie-poster-container {
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .movie-poster,
+    .fallback-poster {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .fallback-poster {
+        object-fit: contain;
+        background-color: #ddd;
+        padding: 10px;
+    }
+
+    .movie-details {
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .movie-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        word-break: break-word;
+        text-align: center;
+        color: white;
+    }
+
+    .movie-info {
+        flex-grow: 1;
+    }
+
+    .movie-release-date,
+    .movie-vote-average,
+    .movie-vote-count {
+        margin-bottom: 5px;
+        color: white;
+    }
+</style>

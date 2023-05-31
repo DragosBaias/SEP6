@@ -1,7 +1,9 @@
 ﻿@page "/HallOfFame"
 @using Entities
 @using SEP6.Temporary
+@using Domain
 @inject NavigationManager NavigationManager
+@inject IApiRetriever _tmdbApiClient
 @inject DataSession DataSession
 
 <div class="container">
@@ -186,11 +188,11 @@
 
 @code {
     private List<MovieDetails> _movies = new List<MovieDetails>();
-    TMDBApiClient _tmdbApiClient;
 
     protected override async Task OnInitializedAsync()
     {
-        _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("LogIn");
         await LoadMovies();
     }
 
@@ -198,10 +200,11 @@
     {
         _movies = await _tmdbApiClient.GetHoFMovie();
     }
-    
+
     private void OpenMovieOverview(MovieDetails movie)
     {
         DataSession.MovieDetails = movie;
+        DataSession.LastLink = "/HallOfFame";
         NavigationManager.NavigateTo("/MovieOverview");
     }
     

@@ -411,3 +411,5 @@ C:\Users\nicol\Source\Repos\SEP6\SEP6\bin\Debug\net5.0\Microsoft.AspNetCore.Http
 C:\Users\nicol\Source\Repos\SEP6\SEP6\bin\Debug\net5.0\Microsoft.Azure.SignalR.Common.dll
 C:\Users\nicol\Source\Repos\SEP6\SEP6\bin\Debug\net5.0\Microsoft.Azure.SignalR.dll
 C:\Users\nicol\Source\Repos\SEP6\SEP6\bin\Debug\net5.0\Microsoft.Azure.SignalR.Protocols.dll
+C:\Users\nicol\source\repos\SEP6\SEP6\obj\Debug\net5.0\RazorDeclaration\Pages\PublicFavouriteList.razor.g.cs
+C:\Users\nicol\source\repos\SEP6\SEP6\obj\Debug\net5.0\Razor\Pages\PublicFavouriteList.razor.g.cs

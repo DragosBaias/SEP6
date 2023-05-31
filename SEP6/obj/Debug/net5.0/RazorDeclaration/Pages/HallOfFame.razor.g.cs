@@ -103,6 +103,13 @@ using SEP6.Temporary;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\HallOfFame.razor"
+using Domain;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/HallOfFame")]
     public partial class HallOfFame : global::Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,14 +119,14 @@ using SEP6.Temporary;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 187 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\HallOfFame.razor"
+#line 189 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\HallOfFame.razor"
        
     private List<MovieDetails> _movies = new List<MovieDetails>();
-    TMDBApiClient _tmdbApiClient;
 
     protected override async Task OnInitializedAsync()
     {
-        _tmdbApiClient = new TMDBApiClient("7f4f7ef07e4add825a6a5cedbbf03857");
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("LogIn");
         await LoadMovies();
     }
 
@@ -127,10 +134,11 @@ using SEP6.Temporary;
     {
         _movies = await _tmdbApiClient.GetHoFMovie();
     }
-    
+
     private void OpenMovieOverview(MovieDetails movie)
     {
         DataSession.MovieDetails = movie;
+        DataSession.LastLink = "/HallOfFame";
         NavigationManager.NavigateTo("/MovieOverview");
     }
     
@@ -143,6 +151,7 @@ using SEP6.Temporary;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiRetriever _tmdbApiClient { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }

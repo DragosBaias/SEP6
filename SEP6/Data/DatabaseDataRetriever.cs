@@ -35,7 +35,7 @@ namespace SEP6.Data
         public async Task<User> LogIn(string username, string password)
         {
             await using var context = new ImperiumDBContext(options);
-            return await context.Users.Include(m => m.MovieList).FirstOrDefaultAsync(m => m.Username.Equals(username) && m.Password.Equals(password));
+            return await context.Users.Include(m => m.MovieList).FirstAsync(m => m.Username.Equals(username) && m.Password.Equals(password));
         }
 
         public async Task<Movie> GetMovie(int id)
@@ -57,7 +57,7 @@ namespace SEP6.Data
             return context.MovieList.Include(m => m.Movies).ToList();
         }
 
-        public async Task AddMovie( Movie movie)
+        public async Task AddMovie(Movie movie)
         {
             using var context = new ImperiumDBContext(options);
             context.Movie.Add(movie);
@@ -85,5 +85,12 @@ namespace SEP6.Data
 
             return newId;
         }
+
+        public async Task<List<User>> GetUsers()
+        {
+            using var context = new ImperiumDBContext(options);
+            return context.Users.Include(m => m.MovieList).Include(n=>n.MovieList.Movies).ToList();
+        }
     }
+    
 }

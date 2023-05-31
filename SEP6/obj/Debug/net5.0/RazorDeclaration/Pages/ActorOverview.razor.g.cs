@@ -105,6 +105,13 @@ using SEP6.Temporary;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\ActorOverview.razor"
+using SEP6.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\ActorOverview.razor"
 using Domain;
 
 #line default
@@ -119,34 +126,22 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 175 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\ActorOverview.razor"
+#line 127 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\ActorOverview.razor"
        
     protected override async Task OnInitializedAsync()
     {
-        if (DataSession.CastMember != null)
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("/LogIn");
+
+        if (DataSession.Actor == null)
         {
-            await LoadMostPopularMovies();
+            NavigationManager.NavigateTo("/Movielist");
         }
-    }
-
-    private async Task LoadMostPopularMovies()
-    {
-        var actorId = DataSession.CastMember.Id;
-        var movies = new List<MovieDetails>();//await TmdbClient.GetMostPopularMoviesByActor(actorId);
-
-        if (movies != null)
-        {
-            DataSession.CastMember.MostPopularMovies = movies;
-        }
-        else
-            Console.WriteLine("movies is null");
-
-        StateHasChanged();
     }
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo("/ActorList");
+        NavigationManager.NavigateTo("/MovieOverview");
     }
 
 #line default

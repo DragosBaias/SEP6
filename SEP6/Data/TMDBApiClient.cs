@@ -115,14 +115,28 @@ public class TMDBApiClient:IApiRetriever
         response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadAsStringAsync();
+        await Console.Out.WriteLineAsync(content);
 
         var credits = JsonConvert.DeserializeObject<MovieCredits>(content);
 
         return credits;
     }
-    
-    
-   }
+
+    public async Task<Actor> GetActorInformation(int castMemberId)
+    {
+            string url = $"person/{castMemberId}?api_key={_apiKey}";
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+            Actor actor = JsonConvert.DeserializeObject<Actor>(json);
+                return actor;
+            }
+       
+        return null; 
+    }
+}
 
 public class MovieListResponse
 {

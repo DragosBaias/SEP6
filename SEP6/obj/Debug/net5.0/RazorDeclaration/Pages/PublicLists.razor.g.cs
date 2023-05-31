@@ -126,26 +126,29 @@ using SEP6.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 57 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\PublicLists.razor"
+#line 59 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\PublicLists.razor"
        
-    private List<List<MovieDetails>> _shownMovies = new();
+    private List<TempMovieList> _shownMovies = new();
 
     protected override async Task OnInitializedAsync()
     {
+        if (DataSession.User == null)
+            NavigationManager.NavigateTo("Login");
         _shownMovies = await LoadLists();
     }
 
-    private async Task<List<List<MovieDetails>>> LoadLists()
+    private async Task<List<TempMovieList>> LoadLists()
     {
+        List<User> Users = await DatabaseRetriever.GetUsers();
         List<Entities.MovieList> movieLists = await DatabaseRetriever.GetMovieLists();
-        List<List<MovieDetails>> shownMovies = new List<List<MovieDetails>>();
+        List<TempMovieList> shownMovies = new List<TempMovieList>();
 
-        foreach (var movieList in movieLists)
+        foreach (var user in Users)
         {
-            if(movieList.Movies != null)
+            if(user.MovieList.Movies != null)
             {
                 List<MovieDetails> movieDetailsList = new List<MovieDetails>();
-                foreach (var movie in movieList.Movies.Take(3))
+                foreach (var movie in user.MovieList.Movies)
                 {
                     if(movie != null)
                     {
@@ -153,22 +156,31 @@ using SEP6.Data;
                         movieDetailsList.Add(movieDetails);
                     }
                 }
-                shownMovies.Add(movieDetailsList);
+                shownMovies.Add(new TempMovieList { username = user.Username, movieDetailsList1 = movieDetailsList });
             }
         }
 
         return shownMovies;
     }
+
     
+
     private void OpenMovieOverview(MovieDetails movie)
     {
-        DataSession.Instance.MovieDetails = movie;
+        DataSession.MovieDetails = movie;
+        DataSession.LastLink = "/PublicLists";
         NavigationManager.NavigateTo("/MovieOverview");
     }
-    
+
     private void GoBack()
     {
         NavigationManager.NavigateTo("/MovieList");
+    }
+
+    private void OpenPublicFavouriteList( TempMovieList movieList)
+    {
+        DataSession.TempMovieList = movieList;
+        NavigationManager.NavigateTo("PublicFavouriteList");
     }
 
 #line default

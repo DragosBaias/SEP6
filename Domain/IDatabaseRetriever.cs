@@ -16,6 +16,8 @@ namespace Domain
         public Task<List<MovieList>> GetMovieLists();
         public Task AddMovie(Movie movie);
         public Task RemoveMovie(int movieId);
+
+        public Task<List<User>> GetUsers();
         
 
 

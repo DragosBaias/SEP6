@@ -8,6 +8,7 @@
 @using Domain
 @using SEP6.Data
 
+
 <div class="container">
 
     
@@ -370,6 +371,8 @@
 
     protected override async Task OnInitializedAsync()
     {
+        if (DataSession.User == null)
+            Navigation.NavigateTo("LogIn");
         await LoadMovies();
     }
 
@@ -438,7 +441,7 @@
     {
         _searchMode = true;
     }
-    
+
     private void OpenHallOfFame()
     {
         Navigation.NavigateTo("HallOfFame");
@@ -447,6 +450,7 @@
     private void OpenMovieOverview(MovieDetails movie)
     {
         DataSession.Instance.MovieDetails = movie;
+        DataSession.LastLink = "/MovieList";
         Navigation.NavigateTo("/MovieOverview");
     }
     
@@ -465,4 +469,5 @@
         Navigation.NavigateTo("PublicLists");
     }
 
+}
 }

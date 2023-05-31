@@ -119,7 +119,7 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\LogIn.razor"
+#line 34 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\LogIn.razor"
        
     private string username;
     private string password;
@@ -129,19 +129,28 @@ using Domain;
         try
         {
             DataSession.User=await DatabaseRetriever.LogIn(username, password);
-    // Login successful, navigate to home page or another desired page
-            Navigation.NavigateTo("/movielist");
+            if (DataSession.User == null)
+            {
+                await JsRuntime.InvokeVoidAsync("alert", "The credentials are incorrect.");
+                await OnInitializedAsync();
+            }
+            else
+            {
+                DataSession.LastLink = "/movielist";
+                Navigation.NavigateTo("/movielist");
+            }
+
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-    // Handle login error
         }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private DataSession DataSession { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IDatabaseRetriever DatabaseRetriever { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager Navigation { get; set; }
