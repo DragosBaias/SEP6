@@ -126,7 +126,7 @@ using Domain;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 116 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\ActorOverview.razor"
+#line 127 "C:\Users\nicol\source\repos\SEP6\SEP6\Pages\ActorOverview.razor"
        
     protected override async Task OnInitializedAsync()
     {

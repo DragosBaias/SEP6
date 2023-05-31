@@ -124,6 +124,15 @@ using Domain;
     private string username;
     private string password;
 
+    private void OnInitialized()
+    {
+        DataSession.User = null;
+        DataSession.LastLink = "";
+        DataSession.Actor = null;
+        DataSession.MovieDetails = null;
+        DataSession.TempMovieList = null;
+    }
+
     private async Task LogInUser()
     {
         try

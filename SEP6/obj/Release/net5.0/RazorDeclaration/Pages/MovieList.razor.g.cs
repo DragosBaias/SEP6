@@ -205,7 +205,7 @@ using SEP6.Data;
     {
         _searchMode = true;
     }
-    
+
     private void OpenHallOfFame()
     {
         Navigation.NavigateTo("HallOfFame");
@@ -214,6 +214,7 @@ using SEP6.Data;
     private void OpenMovieOverview(MovieDetails movie)
     {
         DataSession.Instance.MovieDetails = movie;
+        DataSession.LastLink = "/MovieList";
         Navigation.NavigateTo("/MovieOverview");
     }
     
