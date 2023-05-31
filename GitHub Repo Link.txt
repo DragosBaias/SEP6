@@ -1,2 +1,0 @@
-Link for the source code: https://github.com/ImperiumMovie/SEP6.git
-Link for the test repo: https://github.com/ImperiumMovie/SEP6-Selenium.git
